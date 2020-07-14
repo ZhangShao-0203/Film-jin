@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2020/7/13
-  Time: 19:42
+  Date: 2020/7/14
+  Time: 14:16
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,19 +16,18 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/amazeui.min.css" />
     <link rel="stylesheet" href="../css/admin.css" />
-    <style>
-        
-    </style>
+</head>
+
 <body>
 <div class="dvcontent">
 
     <div>
         <!--tab start-->
-        <div class="tabs">
+        <div class="tabs" style="margin: 30px;">
             <div class="hd">
-                <ul style="">
-                    <li style="box-sizing: initial;-webkit-box-sizing: initial;" class="on">查看演员</li>
-                    <li class="" style="box-sizing: initial;-webkit-box-sizing: initial;">添加演员</li>
+                <ul>
+                    <li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">查看电影</li>
+                    <li class="" style="box-sizing: initial;-webkit-box-sizing: initial;">添加电影</li>
                 </ul>
             </div>
             <div class="bd">
@@ -39,15 +38,27 @@
                             <table class="table" id="tbRecord">
                                 <thead>
                                 <tr>
-                                    <th>演员id</th>
-                                    <th>演员姓名</th>
-                                    <th>演员照片</th>
-                                    <th>类型</th>
+                                    <th>编号</th>
+                                    <th>商品名称</th>
+                                    <th>商品分类</th>
+                                    <th>入库数量 </th>
+                                    <th>入库日期</th>
                                     <th>编辑</th>
                                     <th>删除</th>
                                 </tr>
                                 </thead>
-                                <tbody id="show">
+
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>商品1</td>
+                                    <td>肉类</td>
+                                    <td>1000</td>
+                                    <td>2012-12-10</td>
+                                    <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
+                                    <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
+                                </tr>
+
                                 </tbody>
 
                             </table>
@@ -74,12 +85,35 @@
                                                   action="user/addUser1Submit.action" method="post">
 
                                                 <div class="am-form-group">
-                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        分类名称</label>
+                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
+                                                        分类</label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="text" id="user-name" required
-                                                               placeholder="分类名称" name="name">
-                                                        <small>10字以内...</small>
+                                                        <select name="groupId" required>
+                                                            <option value="">请选择分类</option>
+
+
+                                                        </select> <small>分类</small>
+                                                    </div>
+                                                </div>
+                                                <div class="am-form-group">
+                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
+                                                        商品名称</label>
+                                                    <div class="am-u-sm-9">
+                                                        <select name="groupId" required>
+                                                            <option value="">请选择商品</option>
+
+
+                                                        </select> <small>商品</small>
+                                                    </div>
+                                                </div>
+
+                                                <div class="am-form-group">
+                                                    <label for="name" class="am-u-sm-3 am-form-label">
+                                                        数量</label>
+                                                    <div class="am-u-sm-9">
+                                                        <input type="text" id="name" required
+                                                               placeholder="数量" name="name">
+                                                        <small>数量</small>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
@@ -99,12 +133,12 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
+                                <!-- content end -->
                             </div>
-                            <!-- content end -->
-                        </div>
-                        <!-- end-->
+                            <!--添加 end-->
+                            <!--end-->
                 </ul>
             </div>
         </div>
@@ -169,21 +203,7 @@
             $.jq_Confirm({
                 message: "您确定要删除吗?",
                 btnOkClick: function() {
-                    $.ajax({
-                        type: "post",
-                        url: "/RawMaterialsType/DeleteRawMaterialsType",
-                        data: { id: id },
-                        success: function(data) {
-                            if(data > 0) {
-                                $.jq_Alert({
-                                    message: "删除成功",
-                                    btnOkClick: function() {
-                                        page1();
-                                    }
-                                });
-                            }
-                        }
-                    });
+
                 }
             });
         }
