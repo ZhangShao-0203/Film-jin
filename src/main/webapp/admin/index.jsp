@@ -10,10 +10,10 @@
 <head>
     <meta charset="UTF-8">
     <title>@ViewBag.Title</title>
-    <link href="../css/Site.css" rel="stylesheet" type="text/css" />
-    <link href="../css/zy.layout.css" rel="stylesheet" />
-    <link href="../css/zy.form.css" rel="stylesheet" />
-    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="css/zy.layout.css" rel="stylesheet" />
+    <link href="css/zy.form.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
     <style type="text/css">
         .headerlitooleulsubitem_gray {
             background-Color: White;
@@ -211,7 +211,7 @@
             border: none;
         }
     </style>
-    <link href="../css/zy.menu.css" rel="stylesheet" />
+    <link href="css/zy.menu.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -241,13 +241,13 @@
         <li class="limenuitem">
             <i class="icon-cog menuicon"></i>系统菜单<b class="arrow icon-angle-down arrow-down"></b>
             <ul class="ulleftsubitems">
-                <a href="../admin/listActor.jsp" target="right">
+                <a href="admin/listActor.jsp" target="right">
                     <li>演员管理</li>
                 </a>
                 <a href="inventory.html" target="right">
                     <li>**管理</li>
                 </a>
-                <a href="../admin/listMovie.jsp" target="right">
+                <a href="admin/listMovie.jsp" target="right">
                     <li>电影管理</li>
                 </a>
                 <a href="warning.html" target="right">
@@ -256,10 +256,10 @@
                 <a href="outBoud.html" target="right">
                     <li>出库管理</li>
                 </a>
-                <a href="../admin/listUser.jsp" target="right">
+                <a href="admin/listUser.jsp" target="right">
                     <li>用户管理</li>
                 </a>
-                <a href="../admin/updatePwd.jsp" target="right"><li >修改密码</li></a>
+                <a href="admin/updatePwd.jsp" target="right"><li >修改密码</li></a>
             </ul>
         </li>
     </ul>
@@ -267,9 +267,9 @@
         <iframe src="../admin/listActor.jsp" scrolling="no" width="100%" height="1200" name="right" border="none"></iframe>
     </div>
 </div>
-<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script src="../js/plugs/Jqueryplugs.js" type="text/javascript"></script>
-<script src="../js/_layout.js"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+<script src="js/_layout.js"></script>
 
 
 

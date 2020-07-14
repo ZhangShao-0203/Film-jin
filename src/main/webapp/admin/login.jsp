@@ -10,9 +10,9 @@
 <head>
     <title>电影购票系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="../js/login.js"></script>
-    <link href="../css/login2.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <link href="css/login2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>后台登录<sup>2020</sup></h1>

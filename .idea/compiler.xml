@@ -11,5 +11,8 @@
         <module name="Film-jin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Film" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

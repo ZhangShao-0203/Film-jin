@@ -11,14 +11,17 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" />
-    <link rel="stylesheet" href="../css/Site.css" />
-    <link rel="stylesheet" href="../css/zy.all.css" />
-    <link rel="stylesheet" href="../css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/amazeui.min.css" />
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="css/Site.css" />
+    <link rel="stylesheet" href="css/zy.all.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/admin.css" />
     <style>
-        
+        /*#show tr td{*/
+            /*text-align: center;*/
+        /*}*/
     </style>
+
 <body>
 <div class="dvcontent">
 
@@ -47,7 +50,7 @@
                                     <th>删除</th>
                                 </tr>
                                 </thead>
-                                <tbody id="show">
+                                <tbody id="show" >
                                 </tbody>
 
                             </table>
@@ -71,24 +74,33 @@
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
                                             <form class="am-form am-form-horizontal"
-                                                  action="user/addUser1Submit.action" method="post">
+                                                  action="addActor" method="post" enctype="multipart/form-data">
 
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        分类名称</label>
+                                                        演员名称</label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="user-name" required
-                                                               placeholder="分类名称" name="name">
+                                                               placeholder="演员名称" name="name">
                                                         <small>10字以内...</small>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
-                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">
-                                                        备注</label>
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        演员头像</label>
                                                     <div class="am-u-sm-9">
-									<textarea class="" rows="5" id="user-intro" name="remark"
-                                              placeholder="输入备注"></textarea>
-                                                        <small>250字以内...</small>
+                                                        <input type="file" name="doc" id="chanpinzhutu">
+                                                        <img src="#" width="80" height="80" id="imgs"/>
+                                                    </div>
+                                                </div>
+                                                <div class="am-form-group">
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        演员类型</label>
+                                                    <div class="am-u-sm-9">
+                                                        <select>
+                                                            <option>导演</option>
+                                                            <option>演员</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
@@ -113,14 +125,51 @@
     </div>
 
 
-    <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="../js/plugs/Jqueryplugs.js" type="text/javascript"></script>
-    <script src="../js/_layout.js"></script>
-    <script src="../js/plugs/jquery.SuperSlide.source.js"></script>
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+    <script src="js/_layout.js"></script>
+    <script src="js/plugs/jquery.SuperSlide.source.js"></script>
     <script>
         var num = 1;
         $(function() {
+            $("#chanpinzhutu").change(function (e) {
+                var imgBox = e.target;
+                uploadImg($('#bcd'), imgBox)
 
+            })
+
+            function uploadImg(element, tag) {
+                var file = tag.files[0];
+                var imgSrc;
+                if (!/image\/\w+/.test(file.type)) {
+                    alert("看清楚，这个需要图片！");
+                    return false;
+                }
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    imgSrc = this.result;
+                    $("#imgs").attr("src", imgSrc);
+                };
+            }
+            $.ajax({
+                url:"listActor",
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    var jsonobj=eval("("+data+")");
+                    for (var i=0;i<jsonobj.length;i++){
+                        $("#show").append("<tr>\n" +
+                            "                                    <td>"+jsonobj[i].acid+"</td>\n" +
+                            "                                    <td>"+jsonobj[i].acname+"</td>\n" +
+                            "                                    <td>"+jsonobj[i].acphoto+"</td>\n" +
+                            "                                    <td>"+jsonobj[i].acsort+"</td>\n" +
+                            "                                    <td>编辑</td>\n" +
+                            "                                    <td>删除</td>\n" +
+                            "                                </tr>")
+                    }
+                }
+            })
             $(".tabs").slide({ trigger: "click" });
 
         });

@@ -10,11 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="../css/Site.css" />
-    <link rel="stylesheet" href="../css/zy.all.css" />
-    <link rel="stylesheet" href="../css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/amazeui.min.css" />
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="css/Site.css" />
+    <link rel="stylesheet" href="css/zy.all.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/admin.css" />
 </head>
 <body>
 <div class="am-cf admin-main" style="padding-top: 0px;">
