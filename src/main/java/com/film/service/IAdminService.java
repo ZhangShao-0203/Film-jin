@@ -15,4 +15,6 @@ public interface IAdminService {
     int update(Admin admin);
     //查看所有用户
     List<Admin> list();
+
+    Admin login(Admin admin);
 }

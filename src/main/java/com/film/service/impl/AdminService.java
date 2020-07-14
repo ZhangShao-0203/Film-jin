@@ -33,4 +33,9 @@ public class AdminService implements IAdminService {
     public List<Admin> list() {
         return adminDao.list();
     }
+
+    @Override
+    public Admin login(Admin admin) {
+        return adminDao.login(admin);
+    }
 }

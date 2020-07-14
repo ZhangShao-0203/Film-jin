@@ -5,7 +5,10 @@ import com.film.service.IAdminService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +53,14 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
             e.printStackTrace();
         }
         return "list";
+    }
+
+    public String login(){
+        Admin admin1 = adminService.login(admin);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("admin",admin1);
+        System.out.println(admin1);
+        return "listjsp";
     }
 }
