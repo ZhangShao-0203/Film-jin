@@ -22,7 +22,7 @@ public class ActorService implements IActorService {
 
     @Override
     public int delete(int id) {
-        return 0;
+        return ActorDao.delete(id);
     }
 
     @Override

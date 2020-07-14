@@ -26,7 +26,11 @@ public class ActorDao implements IActorDao {
 
     @Override
     public int delete(int id) {
-        return 0;
+        Session s=sessionFactory.getCurrentSession();
+        Actor actor = s.get(Actor.class, id);
+        System.out.println(actor.toString());
+        s.delete(actor);
+        return 1;
     }
 
     @Override

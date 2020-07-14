@@ -59,7 +59,7 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "list";
+        return "success";
     }
     public String edit() {
         try {
