@@ -17,5 +17,5 @@ public interface IAdminDao {
     List<Admin> list();
 
     //登录
-    Admin login(Admin admin);
+    Admin getAdmin(Admin admin);
 }

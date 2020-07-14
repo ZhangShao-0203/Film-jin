@@ -16,5 +16,5 @@ public interface IAdminService {
     //查看所有用户
     List<Admin> list();
 
-    Admin login(Admin admin);
+    Admin getAdmin(Admin admin);
 }

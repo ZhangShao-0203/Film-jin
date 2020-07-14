@@ -45,7 +45,6 @@
             <tx:method name="list*" read-only="false"/>
             <tx:method name="delete*" read-only="false"/>
             <tx:method name="get*" read-only="false"/>
-            <tx:method name="login*" read-only="false"/>
         </tx:attributes>
     </tx:advice>
     <aop:config>

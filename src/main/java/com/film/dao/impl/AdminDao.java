@@ -40,7 +40,7 @@ public class AdminDao implements IAdminDao {
     }
 
     @Override
-    public Admin login(Admin admin) {
+    public Admin getAdmin(Admin admin) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Admin a where a.aid=?1 and a.apass=?2");
         query.setParameter(1,admin.getAid());

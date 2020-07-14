@@ -14,7 +14,7 @@
             <result name="listjsp">/admin/index.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
-            <allowed-methods>list,add,delete,edit,update,login</allowed-methods>
+            <allowed-methods>list,add,delete,edit,update,getAdmin</allowed-methods>
         </action>
         <!--演员-->
         <action name="*Actor" class="com.film.action.ActorAction" method="{1}">

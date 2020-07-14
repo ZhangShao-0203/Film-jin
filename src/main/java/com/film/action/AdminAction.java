@@ -56,9 +56,9 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
         return "list";
     }
 
-    public String login(){
+    public String getAdmin(){
         //System.out.println(admin.toString());
-        Admin admin1 = adminService.login(admin);
+        Admin admin1 = adminService.getAdmin(admin);
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.setAttribute("admin",admin1);

@@ -35,7 +35,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Admin login(Admin admin) {
-        return adminDao.login(admin);
+    public Admin getAdmin(Admin admin) {
+        return adminDao.getAdmin(admin);
     }
 }
