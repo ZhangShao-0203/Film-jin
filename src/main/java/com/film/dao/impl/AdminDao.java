@@ -6,12 +6,14 @@ import com.film.pojo.Admin;
 import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
 @Data
 public class AdminDao implements IAdminDao {
     private SessionFactory sessionFactory;
+
     @Override
     public int add(Admin admin) {
         return 0;
@@ -34,6 +36,13 @@ public class AdminDao implements IAdminDao {
 
     @Override
     public List<Admin> list() {
+        return null;
+    }
+
+    @Override
+    public Admin login(Admin admin) {
+        Session session = sessionFactory.getCurrentSession();
+        //Admin admin1 = session.get("from Admin a where a.aid = ? and a.apass=? ");
         return null;
     }
 }

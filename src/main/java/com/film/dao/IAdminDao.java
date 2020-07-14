@@ -15,4 +15,7 @@ public interface IAdminDao {
     int update(Admin admin);
     //查看所有用户
     List<Admin> list();
+
+    //登录
+    Admin login(Admin admin);
 }
