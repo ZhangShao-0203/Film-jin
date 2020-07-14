@@ -55,4 +55,8 @@
     <bean id="adminAction" class="com.film.action.AdminAction" scope="prototype"></bean>
     <bean id="adminService" class="com.film.service.impl.AdminService"></bean>
     <bean id="adminDao" class="com.film.dao.impl.AdminDao" ></bean>
+
+    <bean id="actorAction" class="com.film.action.ActorAction" scope="prototype"></bean>
+    <bean id="actorService" class="com.film.service.impl.ActorService"></bean>
+    <bean id="actorDao" class="com.film.dao.impl.ActorDao" ></bean>
 </beans>

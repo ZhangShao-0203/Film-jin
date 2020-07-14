@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 @Data
 public class AdminService implements IAdminService {
-    IAdminDao adminDao;
+   private IAdminDao adminDao;
     @Override
     public int add(Admin admin) {
         return adminDao.add(admin);
@@ -31,6 +31,6 @@ public class AdminService implements IAdminService {
 
     @Override
     public List<Admin> list() {
-        return null;
+        return adminDao.list();
     }
 }

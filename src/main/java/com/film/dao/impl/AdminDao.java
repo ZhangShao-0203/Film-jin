@@ -34,12 +34,6 @@ public class AdminDao implements IAdminDao {
 
     @Override
     public List<Admin> list() {
-        List<Admin> res=new ArrayList();
-        // Session s=sessionFactory.getCurrentSession();
-        // Query q = s.createQuery("from Actor");
-        // res=q.list();
-        // return res;
-        Session currentSession = sessionFactory.getCurrentSession();
         return null;
     }
 }

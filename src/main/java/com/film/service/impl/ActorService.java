@@ -32,6 +32,6 @@ public class ActorService implements IActorService {
 
     @Override
     public List<Actor> list() {
-        return null;
+        return ActorDao.list();
     }
 }

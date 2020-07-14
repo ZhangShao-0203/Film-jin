@@ -1,7 +1,13 @@
 package com.film.action;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Test {
     public static void main(String[] args) {
-        System.out.println("a");
+        ClassPathXmlApplicationContext ac=new ClassPathXmlApplicationContext("bean-base.xml");
+        // ActorAction productAction = (ActorAction) ac.getBean("actorAction");
+        // productAction.list();
+        AdminAction adminAction = (AdminAction) ac.getBean("adminAction");
+        adminAction.list();
     }
 }

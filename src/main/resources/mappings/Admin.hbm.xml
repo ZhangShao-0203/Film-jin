@@ -11,5 +11,6 @@
         </id>
         <property name="aname"></property>
         <property name="apass"></property>
+        <property name="tel"></property>
     </class>
 </hibernate-mapping>

@@ -5,6 +5,7 @@ import com.film.pojo.Actor;
 import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,10 @@ public class ActorDao implements IActorDao {
     @Override
     public List<Actor> list(){
         List<Actor> res=new ArrayList();
-        // Session s=sessionFactory.getCurrentSession();
-        // Query q = s.createQuery("from Actor");
-        // res=q.list();
-        // return res;
-        Session currentSession = sessionFactory.getCurrentSession();
-        return null;
+        Session s=sessionFactory.getCurrentSession();
+        Query q = s.createQuery("from Actor");
+        res=q.list();
+        return res;
 
     }
 }

@@ -4,10 +4,13 @@ import com.film.pojo.Actor;
 import com.film.service.IActorService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import lombok.Data;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
 public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
 
     private IActorService actorService;
@@ -21,10 +24,17 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         return actor;
     }
     public String list() {
+        System.out.println(actorService+"--");
         try {
             actors=actorService.list();
+            System.out.println(actorService+"--");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        JSONObject jsonObject;
+        JSONArray jsonArray=new JSONArray();
+        for (Actor as:actors){
+            System.out.println(as.toString());
         }
         return "listjsp";
     }
