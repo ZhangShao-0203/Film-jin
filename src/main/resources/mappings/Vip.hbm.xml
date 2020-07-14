@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.film.pojo">
+    <class name="Vip">
+        <id name="vid">
+            <generator class="native">
+                <param name="sequence_name">PRO_REQ</param>
+            </generator>
+        </id>
+        <property name="vname"></property>
+        <property name="vpass"></property>
+        <property name="tel"></property>
+    </class>
+</hibernate-mapping>

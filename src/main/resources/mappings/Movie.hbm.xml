@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.film.pojo">
+    <class name="Movie">
+        <id name="mid">
+            <generator class="native">
+                <param name="sequence_name">PRO_REQ</param>
+            </generator>
+        </id>
+        <property name="mnamec"></property>
+        <property name="mnamee"></property>
+        <property name="msort"></property>
+        <property name="mleng"></property>
+        <property name="uptime"></property>
+        <property name="details"></property>
+        <property name="photo"></property>
+        <set name="actors" table="MOVIE_ACTOR" lazy="false">
+            <key column="mid"></key>
+            <many-to-many column="acid" class="Actor"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <package name="aa" namespace="/" extends="json-default">
+       <!--管理员-->
+        <action name="*Admin" class="com.film.action.AdminAction" method="{1}">
+            <result name="list" type="redirect">listProduct</result>
+            <result name="listjsp">/list.jsp</result>
+            <result name="edit">/edit.jsp</result>
+            <result name="index">/index.jsp</result>
+            <allowed-methods>list,add,delete,edit,update</allowed-methods>
+        </action>
+        <!--演员-->
+        <action name="*Actor" class="com.film.action.ActorAction" method="{1}">
+            <result name="list" type="redirect">listProduct</result>
+            <result name="listjsp">/list.jsp</result>
+            <result name="edit">/edit.jsp</result>
+            <result name="index">/index.jsp</result>
+            <allowed-methods>list,add,delete,edit,update</allowed-methods>
+        </action>
+
+    </package>
+</struts>
