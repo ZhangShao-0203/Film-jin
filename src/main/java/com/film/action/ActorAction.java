@@ -5,7 +5,10 @@ import com.film.service.IActorService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
+import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.aspectj.util.FileUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -75,9 +78,21 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         }
         return "list";
     }
+    @SneakyThrows
     public String add(){
         String newName=actor.getAcname()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
         HttpServletRequest request=ServletActionContext.getRequest();
+        String sacePath=request.getServletContext().getRealPath("/")+"docs/"+newName;
+        File file=new File(sacePath);
+        if(!file.getParentFile().exists()){
 
+            file.getParentFile().mkdirs();
+        }
+        FileUtils.copyFile(doc,file);
+        String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/docs/"+newName;
+        actor.setAcphoto(readPath);
+        System.out.println("-----------------"+actor.toString());
+        int i=actorService.add(actor);
+        return "list";
     }
 }

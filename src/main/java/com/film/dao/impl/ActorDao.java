@@ -14,7 +14,9 @@ public class ActorDao implements IActorDao {
     private SessionFactory sessionFactory;
     @Override
     public int add(Actor actor) {
-        return 0;
+        Session session=sessionFactory.getCurrentSession();
+        int i=(int)session.save(actor);
+        return i;
     }
 
     @Override

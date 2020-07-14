@@ -81,7 +81,7 @@
                                                         演员名称</label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="user-name" required
-                                                               placeholder="演员名称" name="name">
+                                                               placeholder="演员名称" name="acname">
                                                         <small>10字以内...</small>
                                                     </div>
                                                 </div>
@@ -97,9 +97,10 @@
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         演员类型</label>
                                                     <div class="am-u-sm-9">
-                                                        <select>
-                                                            <option>导演</option>
-                                                            <option>演员</option>
+                                                        <select class="textBox"  name="acsort" id="state">
+                                                            <option value="0">--请选择--</option>
+                                                            <option value="导演">导演</option>
+                                                            <option value="演员">演员</option>
                                                         </select>
                                                     </div>
                                                 </div>

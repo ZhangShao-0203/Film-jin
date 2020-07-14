@@ -12,7 +12,7 @@ public class ActorService implements IActorService {
     IActorDao ActorDao;
     @Override
     public int add(Actor actor) {
-        return 0;
+        return ActorDao.add(actor);
     }
 
     @Override
