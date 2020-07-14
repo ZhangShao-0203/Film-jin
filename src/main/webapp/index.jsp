@@ -1,16 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ZhangShao
-  Date: 2020/7/13
-  Time: 9:05
+  User: Administrator
+  Date: 2020/7/14
+  Time: 11:37
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-
-<!--[if IE 8]><html class="ie8"><![endif]-->
-<!--[if IE 9]><html class="ie9"><![endif]-->
-<!--[if gt IE 9]><!--><html><!--<![endif]-->
 <head>
     <title>电影院票房购票_评分_选座_经典影视推荐-猫眼电影</title>
 
@@ -1262,4 +1258,5 @@
 <script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/home-index.cfac7777.js"></script>
 </body>
 </html>
+
 

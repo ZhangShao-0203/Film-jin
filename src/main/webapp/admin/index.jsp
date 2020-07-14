@@ -241,7 +241,7 @@
         <li class="limenuitem">
             <i class="icon-cog menuicon"></i>系统菜单<b class="arrow icon-angle-down arrow-down"></b>
             <ul class="ulleftsubitems">
-                <a href="listActor.jsp" target="right">
+                <a href="../admin/listActor.jsp" target="right">
                     <li>分类管理</li>
                 </a>
                 <a href="inventory.html" target="right">
@@ -256,10 +256,10 @@
                 <a href="outBoud.html" target="right">
                     <li>出库管理</li>
                 </a>
-                <a href="user.html" target="right">
+                <a href="../admin/user.jsp" target="right">
                     <li>用户管理</li>
                 </a>
-                <a href="updatePwd.html" target="right"><li >修改密码</li></a>
+                <a href="../admin/updatePwd.jsp" target="right"><li >修改密码</li></a>
             </ul>
         </li>
     </ul>

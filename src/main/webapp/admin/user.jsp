@@ -11,11 +11,11 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" />
-    <link rel="stylesheet" href="css/Site.css" />
-    <link rel="stylesheet" href="css/zy.all.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
-    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="../css/Site.css" />
+    <link rel="stylesheet" href="../css/zy.all.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/amazeui.min.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
 </head>
 <body>
 <div class="dvcontent">
@@ -164,10 +164,10 @@
                     </div>
 
 
-                    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-                    <script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
-                    <script src="js/_layout.js"></script>
-                    <script src="js/plugs/jquery.SuperSlide.source.js"></script>
+                    <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+                    <script src="../js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+                    <script src="../js/_layout.js"></script>
+                    <script src="../js/plugs/jquery.SuperSlide.source.js"></script>
                     <script>
                         var num = 1;
                         $(function() {
