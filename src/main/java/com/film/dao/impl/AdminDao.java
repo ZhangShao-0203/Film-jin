@@ -41,7 +41,7 @@ public class AdminDao implements IAdminDao {
 
     @Override
     public Admin login(Admin admin) {
-        Session session = sessionFactory.getCurrentSession();
+        //Session session = sessionFactory.getCurrentSession();
         //Admin admin1 = session.get("from Admin a where a.aid = ? and a.apass=? ");
         return null;
     }
