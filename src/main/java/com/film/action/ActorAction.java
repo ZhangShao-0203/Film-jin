@@ -5,16 +5,15 @@ import com.film.service.IActorService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
-import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
-import org.aspectj.util.FileUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -78,8 +77,7 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         }
         return "list";
     }
-    @SneakyThrows
-    public String add(){
+    public String add() throws IOException {
         String newName=actor.getAcname()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
         HttpServletRequest request=ServletActionContext.getRequest();
         String sacePath=request.getServletContext().getRealPath("/")+"docs/"+newName;

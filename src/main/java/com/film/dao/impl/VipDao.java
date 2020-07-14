@@ -3,10 +3,18 @@ package com.film.dao.impl;
 import com.film.dao.IVipDao;
 import com.film.pojo.Cinema;
 import com.film.pojo.Vip;
+import lombok.Data;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class VipDao implements IVipDao {
+    private SessionFactory sessionFactory;
+
     @Override
     public int add(Vip vip) {
         return 0;
@@ -29,6 +37,10 @@ public class VipDao implements IVipDao {
 
     @Override
     public List<Vip> list() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        List<Vip> res = new ArrayList();
+        Query q = session.createQuery("from Vip");
+        res = q.list();
+        return res;
     }
 }

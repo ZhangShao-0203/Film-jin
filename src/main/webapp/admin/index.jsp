@@ -241,13 +241,13 @@
         <li class="limenuitem">
             <i class="icon-cog menuicon"></i>系统菜单<b class="arrow icon-angle-down arrow-down"></b>
             <ul class="ulleftsubitems">
-                <a href="admin/listActor.jsp" target="right">
+                <a href="../admin/listActor.jsp" target="right">
                     <li>演员管理</li>
                 </a>
                 <a href="inventory.html" target="right">
                     <li>**管理</li>
                 </a>
-                <a href="admin/listMovie.jsp" target="right">
+                <a href="../admin/listMovie.jsp" target="right">
                     <li>电影管理</li>
                 </a>
                 <a href="warning.html" target="right">
@@ -256,10 +256,10 @@
                 <a href="outBoud.html" target="right">
                     <li>出库管理</li>
                 </a>
-                <a href="admin/listUser.jsp" target="right">
+                <a href="../admin/listVip.jsp" target="right">
                     <li>用户管理</li>
                 </a>
-                <a href="admin/updatePwd.jsp" target="right"><li >修改密码</li></a>
+                <a href="../admin/updatePwd.jsp" target="right"><li >修改密码</li></a>
             </ul>
         </li>
     </ul>
@@ -268,7 +268,7 @@
     </div>
 </div>
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+<script src=js/plugs/Jqueryplugs.js" type="text/javascript"></script>
 <script src="js/_layout.js"></script>
 
 

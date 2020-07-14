@@ -39,21 +39,14 @@
                                 <tr>
                                     <th>编号</th>
                                     <th>用户名 </th>
-                                    <th>姓名</th>
-                                    <th>性别</th>
+                                    <th>密码</th>
+                                    <th>电话</th>
                                     <th>修改</th>
                                     <th>删除</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin</td>
-                                    <td>张三</td>
-                                    <td>男</td>
-                                    <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
-                                    <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
-                                </tr>
+                                <tbody id="showVip">
+
                                 </tbody>
 
                             </table>
@@ -238,6 +231,27 @@
                                 }
                             });
                         }
+                        $(function () {
+                            $.ajax({
+                                url:"listVip",
+                                type:"post",
+                                data:{},
+                                dataType:"json",
+                                success:function(data) {
+                                    var jsonObj=eval("("+data+")");
+                                    for (var i = 0; i <jsonObj.length ; i++) {
+                                        $("#showVip").append("<tr>\n" +
+                                            "                                    <td>"+jsonObj[i].vid+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].vname+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].tel+"</td>\n" +
+                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                                            "                                </tr>")
+                                    }
+                                }
+                            })
+                        })
                     </script>
 
             </div>
