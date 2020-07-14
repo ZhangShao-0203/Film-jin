@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>演员信息管理</title>
     <link rel="stylesheet" />
     <link rel="stylesheet" href="css/Site.css" />
     <link rel="stylesheet" href="css/zy.all.css" />

@@ -242,19 +242,19 @@
             <i class="icon-cog menuicon"></i>系统菜单<b class="arrow icon-angle-down arrow-down"></b>
             <ul class="ulleftsubitems">
                 <a href="../admin/listActor.jsp" target="right">
-                    <li>演员管理</li>
+                    <li>演员信息管理</li>
                 </a>
-                <a href="inventory.html" target="right">
-                    <li>**管理</li>
+                <a href="../admin/listCinema.jsp" target="right">
+                    <li>影院管理</li>
+                </a>
+                <a href="../admin/listVideo.jsp" target="right">
+                    <li>放映厅管理</li>
                 </a>
                 <a href="../admin/listMovie.jsp" target="right">
-                    <li>电影管理</li>
+                    <li>电影信息管理</li>
                 </a>
-                <a href="warning.html" target="right">
-                    <li>预警信息设置</li>
-                </a>
-                <a href="outBoud.html" target="right">
-                    <li>出库管理</li>
+                <a href="../admin/listOrdert.jsp" target="right">
+                    <li>订单信息管理</li>
                 </a>
                 <a href="../admin/listVip.jsp" target="right">
                     <li>用户管理</li>

@@ -31,15 +31,14 @@
                     </div>
                     <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                          style="padding-top: 30px;">
-                        <form class="am-form am-form-horizontal"
-                              action="user/addUser1Submit.action" method="post">
+                        <form class="am-form am-form-horizontal" action="updatePwd" method="post">
 
                             <div class="am-form-group">
                                 <label for="user-name" class="am-u-sm-3 am-form-label">
                                     原密码</label>
                                 <div class="am-u-sm-9">
                                     <input type="text" id="user-name" required
-                                           placeholder="原密码" name="name">
+                                           placeholder="原密码" name="apass">
                                     <small>原密码...</small>
                                 </div>
                             </div>
@@ -48,7 +47,7 @@
                                     新密码</label>
                                 <div class="am-u-sm-9">
                                     <input type="text" id="user-name" required
-                                           placeholder="新密码" name="name">
+                                           placeholder="新密码" name="apass">
                                     <small>新密码...</small>
                                 </div>
                             </div>

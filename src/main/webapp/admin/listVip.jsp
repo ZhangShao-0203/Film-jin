@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>用户信息管理</title>
     <link rel="stylesheet" />
     <link rel="stylesheet" href="css/Site.css" />
     <link rel="stylesheet" href="css/zy.all.css" />
@@ -77,26 +77,15 @@
                                                         姓名 / Name </label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="user-name" required
-                                                               placeholder="姓名 / Name" name="name">
+                                                               placeholder="姓名 / Name" name="vname">
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        用户名 / username </label>
+                                                        密码 / Pass </label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="user-name" required
-                                                               placeholder="用户名 / username" name="username">
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        性别 / sex </label>
-                                                    <div class="am-u-sm-9" style="line-height: 30px;">
-                                                        <input type="radio" id="man" name="sex" value="1"
-                                                        ${user.sex==1? "checked=checked ":""}/> <label for="man">
-                                                        男 </label> &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" id="woman"
-                                                                                                   name="sex" value="0" ${user.sex==0? "checked=checked ":""} />
-                                                        <label for="woman"> 女 </label> <br /> <small>性别...</small>
+                                                               placeholder="姓名 / Name" name="vpass">
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
@@ -104,9 +93,9 @@
                                                         联系电话 / phone </label>
                                                     <div class="am-u-sm-9">
                                                         <input type="tel" id="user-phone" required
-                                                               placeholder="请输入联系电话" name="phone" /> <small>联系电话...</small>
+                                                               placeholder="请输入联系电话" name="tel" /> <small>联系电话...</small>
                                                     </div>
-                                                </div>
+                                                </div><%--
                                                 <div class="am-form-group">
                                                     <label for="user-email" class="am-u-sm-3 am-form-label">
                                                         籍贯 / place </label>
@@ -114,27 +103,7 @@
                                                         <input type="text" id="user-email" required placeholder="请输入籍贯"
                                                                name="place" /> <small>籍贯...</small>
                                                     </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        电子邮件 / Email </label>
-                                                    <div class="am-u-sm-9">
-                                                        <input type="email" id="user-email" required
-                                                               placeholder="输入你的电子邮件 / Email" name="email" /> <small>邮箱你懂得...</small>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="am-form-group">
-                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">
-                                                        备注/ Introg </label>
-                                                    <div class="am-u-sm-9">
-									<textarea class="" rows="5" id="user-intro" name="remark"
-                                              placeholder="输入备注"></textarea>
-                                                        <small>250字以内...</small>
-                                                    </div>
-                                                </div>
+                                                </div>--%>
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
                                                         <input type="submit" class="am-btn am-btn-success" value="添加用户" />

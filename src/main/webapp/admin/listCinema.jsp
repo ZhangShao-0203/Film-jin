@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/7/14
-  Time: 14:16
+  Time: 23:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>电影信息管理</title>
+    <title>影院信息管理</title>
     <link rel="stylesheet" />
     <link rel="stylesheet" href="css/Site.css" />
     <link rel="stylesheet" href="css/zy.all.css" />
@@ -23,11 +23,11 @@
 
     <div>
         <!--tab start-->
-        <div class="tabs" style="margin: 30px;">
+        <div class="tabs">
             <div class="hd">
                 <ul>
-                    <li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">查看电影信息</li>
-                    <li class="" style="box-sizing: initial;-webkit-box-sizing: initial;">添加电影</li>
+                    <li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">影院信息</li>
+                    <li class="" style="box-sizing: initial;-webkit-box-sizing: initial;">添加电影院</li>
                 </ul>
             </div>
             <div class="bd">
@@ -38,33 +38,20 @@
                             <table class="table" id="tbRecord">
                                 <thead>
                                 <tr>
-                                    <th>电影编号</th>
-                                    <th>电影中文名称</th>
-                                    <th>电影英文名称</th>
-                                    <th>电影分类 </th>
-                                    <th>电影时长</th>
-                                    <th>上映时间</th>
-                                    <th>简介</th>
-                                    <th>海报</th>
+                                    <th>电影院编号</th>
+                                    <th>电影院名称</th>
                                     <th>编辑</th>
                                     <th>删除</th>
+
                                 </tr>
                                 </thead>
-
-                                <tbody id="showMovie">
+                                <tbody id="showCinema">
                                 <tr>
                                     <td>1</td>
                                     <td>商品1</td>
-                                    <td>肉类</td>
-                                    <td>1111</td>
-                                    <td>222</td>
-                                    <td>333</td>
-                                    <td>444</td>
-                                    <td>2012-12-10</td>
                                     <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
                                     <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
                                 </tr>
-
                                 </tbody>
 
                             </table>
@@ -87,63 +74,33 @@
                                         </div>
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
+
                                             <form class="am-form am-form-horizontal"
                                                   action="user/addUser1Submit.action" method="post">
 
                                                 <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        分类</label>
-                                                    <div class="am-u-sm-9">
-                                                        <select name="groupId" required>
-                                                            <option value="">请选择分类</option>
-
-
-                                                        </select> <small>分类</small>
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        商品名称</label>
-                                                    <div class="am-u-sm-9">
-                                                        <select name="groupId" required>
-                                                            <option value="">请选择商品</option>
-
-
-                                                        </select> <small>商品</small>
-                                                    </div>
-                                                </div>
-
-                                                <div class="am-form-group">
                                                     <label for="name" class="am-u-sm-3 am-form-label">
-                                                        数量</label>
+                                                        电影院名称</label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="name" required
-                                                               placeholder="数量" name="name">
-                                                    </div>
-                                                </div>
-                                                <div class="am-form-group">
-                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">
-                                                        备注</label>
-                                                    <div class="am-u-sm-9">
-									<textarea class="" rows="5" id="user-intro" name="remark"
-                                              placeholder="输入备注"></textarea>
-                                                        <small>250字以内...</small>
+                                                               placeholder="电影院名称" name="cname">
+                                                        <small>10字以内...</small>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                                        <input type="submit" class="am-btn am-btn-success" value="添加电影" />
+                                                        <input type="submit" class="am-btn am-btn-success" value="添加电影院" />
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-
                                 </div>
-                                <!-- content end -->
+
                             </div>
-                            <!--添加 end-->
-                            <!--end-->
+                            <!-- content end -->
+                        </div>
+                        <!--添加 end-->
                 </ul>
             </div>
         </div>
