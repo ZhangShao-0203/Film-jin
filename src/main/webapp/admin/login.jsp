@@ -47,7 +47,7 @@
                             <label class="input-tips" for="p">密码：</label>
                             <div class="inputOuter" id="pArea">
 
-                                <input type="password" id="p" name="aname" class="inputstyle"/>
+                                <input type="password" id="p" name="apass" class="inputstyle"/>
                             </div>
                         </div>
 

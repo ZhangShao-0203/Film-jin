@@ -11,13 +11,12 @@
        <!--管理员-->
         <action name="*Admin" class="com.film.action.AdminAction" method="{1}">
             <result name="list" type="redirect">listProduct</result>
-            <result name="listjsp">/index.jsp</result>
+            <result name="listjsp">/admin/index.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
             <allowed-methods>list,add,delete,edit,update,login</allowed-methods>
         </action>
         <!--演员-->
-
         <action name="*Actor" class="com.film.action.ActorAction" method="{1}">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">104857600</param>
