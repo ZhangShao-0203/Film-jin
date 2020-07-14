@@ -24,19 +24,23 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         return actor;
     }
     public String list() {
-        System.out.println(actorService+"--");
         try {
             actors=actorService.list();
-            System.out.println(actorService+"--");
         } catch (Exception e) {
             e.printStackTrace();
         }
         JSONObject jsonObject;
         JSONArray jsonArray=new JSONArray();
         for (Actor as:actors){
-            System.out.println(as.toString());
+           jsonObject=new JSONObject();
+           jsonObject.put("acid",as.getAcid());
+           jsonObject.put("acname",as.getAcname());
+           jsonObject.put("acphoto",as.getAcphoto());
+           jsonObject.put("acsort",as.getAcsort());
+           jsonArray.put(jsonObject);
         }
-        return "listjsp";
+        jsonData=jsonArray.toString();
+        return "success";
     }
     public String delete() {
         try {

@@ -21,6 +21,9 @@
             <result name="listjsp">/list.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+            </result>
             <allowed-methods>list,add,delete,edit,update</allowed-methods>
         </action>
 
