@@ -126,7 +126,7 @@
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         演员头像</label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="file" name="doc" id="chanpinzhutu">
+                                                        <input type="file" name="doc" id="chanpinzhutu" required>
                                                         <img src="#" width="80" height="80" id="imgs"/>
                                                     </div>
                                                 </div>
@@ -178,7 +178,7 @@
                             <label for="user-name" class="am-u-sm-3 am-form-label">
                                 演员头像</label>
                             <div class="am-u-sm-9">
-                                <input type="file" name="doc" id="chanpinzhutu1">
+                                <input type="file" name="doc" id="chanpinzhutu1" required>
                                 <img src="#" width="80" height="80" id="imgs1"/>
                             </div>
                         </div>

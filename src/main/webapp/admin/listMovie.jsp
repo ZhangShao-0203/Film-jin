@@ -16,6 +16,41 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        #show tr td {
+            text-align: center;
+        }
+
+        #tbRecord tr th {
+            text-align: center;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 33%;
+            padding: 20px;
+            border: 2px solid orange;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,18 +87,7 @@
                                 </thead>
 
                                 <tbody id="showMovie">
-                                <tr>
-                                    <td>1</td>
-                                    <td>商品1</td>
-                                    <td>肉类</td>
-                                    <td>1111</td>
-                                    <td>222</td>
-                                    <td>333</td>
-                                    <td>444</td>
-                                    <td>2012-12-10</td>
-                                    <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
-                                    <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
-                                </tr>
+
 
                                 </tbody>
 
@@ -88,63 +112,99 @@
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
                                             <form class="am-form am-form-horizontal"
-                                                  action="user/addUser1Submit.action" method="post">
+                                                  action="addActor" method="post" enctype="multipart/form-data"
+                                                  target="_parent">
 
                                                 <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        分类</label>
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        演员名称</label>
                                                     <div class="am-u-sm-9">
-                                                        <select name="groupId" required>
-                                                            <option value="">请选择分类</option>
-
-
-                                                        </select> <small>分类</small>
+                                                        <input type="text" id="user-name" required
+                                                               placeholder="演员名称" name="acname">
+                                                        <small>10字以内...</small>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        商品名称</label>
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        演员头像</label>
                                                     <div class="am-u-sm-9">
-                                                        <select name="groupId" required>
-                                                            <option value="">请选择商品</option>
-
-
-                                                        </select> <small>商品</small>
-                                                    </div>
-                                                </div>
-
-                                                <div class="am-form-group">
-                                                    <label for="name" class="am-u-sm-3 am-form-label">
-                                                        数量</label>
-                                                    <div class="am-u-sm-9">
-                                                        <input type="text" id="name" required
-                                                               placeholder="数量" name="name">
+                                                        <input type="file" name="doc" id="chanpinzhutu" required>
+                                                        <img src="#" width="80" height="80" id="imgs"/>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
-                                                    <label for="user-intro" class="am-u-sm-3 am-form-label">
-                                                        备注</label>
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        演员类型</label>
                                                     <div class="am-u-sm-9">
-									<textarea class="" rows="5" id="user-intro" name="remark"
-                                              placeholder="输入备注"></textarea>
-                                                        <small>250字以内...</small>
+                                                        <select class="textBox" name="acsort" id="state">
+                                                            <option value="导演">导演</option>
+                                                            <option value="演员">演员</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                                        <input type="submit" class="am-btn am-btn-success" value="添加电影" />
+                                                        <input type="submit" class="am-btn am-btn-success"
+                                                               value="添加演员"/>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-
                                 </div>
-                                <!-- content end -->
+
                             </div>
-                            <!--添加 end-->
-                            <!--end-->
+                            <!-- content end -->
+                        </div>
+                        <!-- end-->
+                    </div>
+
                 </ul>
+
+                <div id="light" class="white_content">
+                    <form class="am-form am-form-horizontal"
+                          action="updateActor" method="post" enctype="multipart/form-data"
+                          target="_parent">
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                演员名称</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="acid" value="" id="acid">
+                                <input type="text" id="user-name1" required
+                                       placeholder="演员名称" name="acname">
+                                <small>10字以内...</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                演员头像</label>
+                            <div class="am-u-sm-9">
+                                <input type="file" name="doc" id="chanpinzhutu1" required>
+                                <img src="#" width="80" height="80" id="imgs1"/>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                演员类型</label>
+                            <div class="am-u-sm-9">
+                                <select class="textBox" name="acsort" id="state1">
+                                    <option value="导演">导演</option>
+                                    <option value="演员">演员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="am-btn am-btn-success"
+                                       value="修改提交"/>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="javascript:void(0)"
+                       onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a>
+                </div>
+                <div id="fade" class="black_overlay"></div>
             </div>
         </div>
         <!--tab end-->
@@ -161,54 +221,103 @@
         $(function() {
 
             $(".tabs").slide({ trigger: "click" });
+            $("#chanpinzhutu").change(function (e) {
+                var imgBox = e.target;
+                uploadImg($('#bcd'), imgBox)
 
+            })
+            $("#chanpinzhutu1").change(function (e) {
+                var imgBox = e.target;
+                uploadImg1($('#bcd'), imgBox)
+            })
+
+            function uploadImg(element, tag) {
+                var file = tag.files[0];
+                var imgSrc;
+                if (!/image\/\w+/.test(file.type)) {
+                    alert("看清楚，这个需要图片！");
+                    return false;
+                }
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    imgSrc = this.result;
+                    $("#imgs").attr("src", imgSrc);
+
+                };
+            }
+
+            function uploadImg1(element, tag) {
+                var file = tag.files[0];
+                var imgSrc;
+                if (!/image\/\w+/.test(file.type)) {
+                    alert("看清楚，这个需要图片！");
+                    return false;
+                }
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    imgSrc = this.result;
+                    $("#imgs1").attr("src", imgSrc);
+                };
+            }
+
+            $(".tabs").slide({trigger: "click"});
+            show();
         });
-
-
-        var btn_save = function() {
-            var pid = $("#RawMaterialsTypePageId  option:selected").val();
-            var name = $("#RawMaterialsTypeName").val();
-            var desc = $("#RawMaterialsTypeDescription").val();
-            var ramark = $("#Ramark").val();
+        function show() {
+            $("#showMovie").empty();
             $.ajax({
+                url: "listMovie",
                 type: "post",
-                url: "/RawMaterialsType/AddRawMaterialsType",
-                data: { name: name, pid: pid, desc: desc, ramark: ramark },
-                success: function(data) {
-                    if(data > 0) {
-                        $.jq_Alert({
-                            message: "添加成功",
-                            btnOktext: "确认",
-                            dialogModal: true,
-                            btnOkClick: function() {
-                                //$("#RawMaterialsTypeName").val("");
-                                //$("#RawMaterialsTypeDescription").val("");
-                                //$("#Ramark").val("");
-                                //page1();
-                                location.reload();
-
-                            }
-                        });
+                dataType: "json",
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    for (var i = 0; i < jsonobj.length; i++) {
+                        $("#showMovie").append("<tr>\n" +
+                            "                                    <td>"+jsonobj[i].mid+"</td>\n" +
+                            "                                    <td>商品1</td>\n" +
+                            "                                    <td>肉类</td>\n" +
+                            "                                    <td>1111</td>\n" +
+                            "                                    <td>222</td>\n" +
+                            "                                    <td>333</td>\n" +
+                            "                                    <td>444</td>\n" +
+                            "                                    <td>2012-12-10</td>\n" +
+                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                            "                                </tr>")
                     }
                 }
-            });
-            alert(t);
+            })
         }
+        var btn_edit = function (id) {
+            $("#light").css({display: "block"})
+            $("#fade").css({display: "block"})
+            $.ajax({
+                type: "post",
+                url: "editActor",
+                data: {acid: id},
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    $("#acid").val(jsonobj.acid);
+                    $("#user-name1").val(jsonobj.acname);
+                    $("#state option[value='"+jsonobj.acsort+"']").attr("selected", true)
+                }
+            });
 
-        var btn_edit = function(id) {
-            $.jq_Panel({
-                url: "/RawMaterialsType/EditRawMaterialsType?id=" + id,
-                title: "编辑分类",
-                dialogModal: true,
-                iframeWidth: 500,
-                iframeHeight: 400
-            });
         }
-        var btn_delete = function(id) {
+        var btn_delete = function (id) {
             $.jq_Confirm({
                 message: "您确定要删除吗?",
-                btnOkClick: function() {
-
+                btnOkClick: function () {
+                    $.ajax({
+                        type: "post",
+                        url: "deleteActor",
+                        data: {acid: id},
+                        success: function (data) {
+                            show();
+                        }
+                    });
                 }
             });
         }

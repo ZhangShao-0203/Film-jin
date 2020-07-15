@@ -1,33 +1,36 @@
 package com.film.service.impl;
 
+import com.film.dao.IActorDao;
+import com.film.dao.IMovieDao;
 import com.film.pojo.Movie;
 import com.film.service.IMovieService;
 
 import java.util.List;
 
 public class MovieService implements IMovieService {
+    IMovieDao MovieDao;
     @Override
     public int add(Movie movie) {
-        return 0;
+        return MovieDao.add(movie);
     }
 
     @Override
     public Movie get(int id) {
-        return null;
+        return MovieDao.get(id);
     }
 
     @Override
     public int delete(int id) {
-        return 0;
+        return MovieDao.delete(id);
     }
 
     @Override
     public int update(Movie movie) {
-        return 0;
+        return MovieDao.update(movie);
     }
 
     @Override
     public List<Movie> list() {
-        return null;
+        return MovieDao.list();
     }
 }
