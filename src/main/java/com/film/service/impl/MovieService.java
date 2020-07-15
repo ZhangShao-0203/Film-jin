@@ -4,9 +4,10 @@ import com.film.dao.IActorDao;
 import com.film.dao.IMovieDao;
 import com.film.pojo.Movie;
 import com.film.service.IMovieService;
+import lombok.Data;
 
 import java.util.List;
-
+@Data
 public class MovieService implements IMovieService {
     IMovieDao MovieDao;
     @Override

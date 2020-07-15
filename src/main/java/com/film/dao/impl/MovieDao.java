@@ -3,13 +3,14 @@ package com.film.dao.impl;
 import com.film.dao.IMovieDao;
 import com.film.pojo.Actor;
 import com.film.pojo.Movie;
+import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
 public class MovieDao implements IMovieDao {
     private SessionFactory sessionFactory;
     @Override
