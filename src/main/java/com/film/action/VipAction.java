@@ -11,6 +11,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipOutputStream;
+
 @Data
 public class VipAction extends ActionSupport implements ModelDriven<Vip> {
 
@@ -50,8 +52,9 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
     }
 
     public String add(){
-
-        return "list";
+        int i = vipService.add(vip);
+        System.out.println(i);
+        return "add";
     }
 
     public String edit(){

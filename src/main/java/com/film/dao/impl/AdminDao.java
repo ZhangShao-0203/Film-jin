@@ -21,7 +21,9 @@ public class AdminDao implements IAdminDao {
 
     @Override
     public Admin get(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Admin admin = session.get(Admin.class, id);
+        return admin;
     }
 
     @Override

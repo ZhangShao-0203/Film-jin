@@ -14,6 +14,9 @@
             <result name="listjsp">/admin/index.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+            </result>
             <allowed-methods>list,add,delete,edit,update,login</allowed-methods>
         </action>
         <!--演员-->
@@ -48,8 +51,7 @@
         <!--会员-->
         <action name="*Vip" class="com.film.action.VipAction" method="{1}">
             <result name="list" type="redirect">admin/index.jsp</result>
-            <result name="listjsp">/list.jsp</result>
-            <result name="edit">/edit.jsp</result>
+            <result name="add">/admin/listVip.jsp</result>
             <result name="index">/index.jsp</result>
             <result name="success" type="json">
                 <param name="root">jsonData</param>

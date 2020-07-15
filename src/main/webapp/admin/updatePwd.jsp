@@ -5,7 +5,7 @@
   Time: 9:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -31,14 +31,14 @@
                     </div>
                     <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                          style="padding-top: 30px;">
-                        <form class="am-form am-form-horizontal" action="updatePwd" method="post">
+                        <form class="am-form am-form-horizontal" action="updateAdmin" method="post">
 
                             <div class="am-form-group">
                                 <label for="user-name" class="am-u-sm-3 am-form-label">
                                     原密码</label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" id="user-name" required
-                                           placeholder="原密码" name="apass">
+                                    <input type="text" id="user-name1" required
+                                           placeholder="原密码" >
                                     <small>原密码...</small>
                                 </div>
                             </div>
@@ -68,5 +68,23 @@
         <!-- content end -->
     </div>
     <!-- end-->
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script>
+
+        $(function () {
+            $.ajax({
+                type: "post",
+                url: "editAdmin",
+                data: { },
+                dataType: "json",
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    $("#user-name1").val(jsonobj.apass);
+                    alert("ss")
+                }
+            });
+        });
+    </script>
+</div>
 </body>
 </html>

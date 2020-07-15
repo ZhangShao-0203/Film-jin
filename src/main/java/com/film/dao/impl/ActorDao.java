@@ -24,7 +24,7 @@ public class ActorDao extends HibernateTemplate implements IActorDao {
     public Actor get(int id) {
         Session s = sessionFactory.getCurrentSession();
         Actor actor=s.get(Actor.class,id);
-        System.out.println(actor.toString());
+        //System.out.println(actor.toString());
         return actor;
     }
 

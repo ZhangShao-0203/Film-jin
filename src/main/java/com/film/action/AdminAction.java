@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
 import org.apache.struts2.ServletActionContext;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,8 +17,10 @@ import java.util.List;
 public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
 
     private IAdminService adminService;
-    Admin admin=new Admin();
+    Admin admin;
     List<Admin> admins=new ArrayList();
+    String jsonData;
+
     @Override
     public Admin getModel() {
         return admin;
@@ -40,12 +43,19 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
         return "list";
     }
     public String edit() {
-        try {
-            admin=adminService.get(admin.getAid());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "edit";
+        HttpServletRequest request = ServletActionContext.getRequest();
+        Admin admin1= (Admin) request.getSession().getAttribute("admin");
+        System.out.println(admin1.getAid());
+
+        admin=adminService.get(admin1.getAid());
+
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("aid",admin.getAid());
+        jsonObject.put("apass",admin.getApass());
+        jsonData= jsonObject.toString();
+
+        return "success";
     }
     public String update() {
         try {
@@ -57,7 +67,7 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
     }
 
     public String login(){
-        System.out.println(admin.toString());
+        //System.out.println(admin.toString());
         Admin admin1 = adminService.getAdmin(admin);
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
