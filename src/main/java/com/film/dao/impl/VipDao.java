@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,16 @@ public class VipDao implements IVipDao {
 
     @Override
     public int add(Vip vip) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        int i = (int)session.save(vip);
+        return i;
     }
 
     @Override
-    public Cinema get(int id) {
-        return null;
+    public Vip get(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Vip vip = session.get(Vip.class, id);
+        return vip;
     }
 
     @Override
@@ -36,7 +41,9 @@ public class VipDao implements IVipDao {
 
     @Override
     public int update(Vip vip) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        session.update(vip);
+        return 2;
     }
 
     @Override
