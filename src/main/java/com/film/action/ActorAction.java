@@ -5,6 +5,7 @@ import com.film.service.IActorService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
+import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
@@ -62,16 +63,37 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         return "success";
     }
     public String edit() {
+        System.out.println(actor.getAcid());
         try {
             actor=actorService.get(actor.getAcid());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "edit";
+        System.out.println(actor.toString());
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("acid",actor.getAcid());
+        jsonObject.put("acname",actor.getAcname());
+        jsonObject.put("acphoto",actor.getAcphoto());
+        jsonObject.put("acsort",actor.getAcsort());
+        jsonData=jsonObject.toString();
+        return "success";
     }
+    @SneakyThrows
     public String update() {
+        String newName=actor.getAcname()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
+        HttpServletRequest request=ServletActionContext.getRequest();
+        String sacePath=request.getServletContext().getRealPath("/")+"docs/"+newName;
+        File file=new File(sacePath);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        FileUtils.copyFile(doc,file);
+        String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/docs/"+newName;
+        actor.setAcphoto(readPath);
+        System.out.println("-----------------"+actor.toString());
         try {
             int i = actorService.update(actor);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,7 +105,6 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         String sacePath=request.getServletContext().getRealPath("/")+"docs/"+newName;
         File file=new File(sacePath);
         if(!file.getParentFile().exists()){
-
             file.getParentFile().mkdirs();
         }
         FileUtils.copyFile(doc,file);
