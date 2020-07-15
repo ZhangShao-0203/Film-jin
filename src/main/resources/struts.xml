@@ -24,9 +24,6 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="list" type="redirect">admin/index.jsp</result>
-            <result name="listjsp">/list.jsp</result>
-            <result name="edit">/edit.jsp</result>
-            <result name="index">/index.jsp</result>
             <result name="success" type="json">
                 <param name="root">jsonData</param>
             </result>
@@ -46,7 +43,7 @@
             <result name="success" type="json">
                 <param name="root">jsonData</param>
             </result>
-            <allowed-methods>list,add,delete,edit,update</allowed-methods>
+            <allowed-methods>list,add,delete,edit,update,addfile</allowed-methods>
         </action>
         <!--会员-->
         <action name="*Vip" class="com.film.action.VipAction" method="{1}">

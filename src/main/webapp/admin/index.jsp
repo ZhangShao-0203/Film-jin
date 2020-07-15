@@ -270,6 +270,9 @@
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src=js/plugs/Jqueryplugs.js" type="text/javascript"></script>
 <script src="js/_layout.js"></script>
+<script>
+
+</script>
 
 
 

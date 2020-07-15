@@ -20,4 +20,17 @@ public class Movie {
     private String photo;
     Set<Actor> actors;
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "mid=" + mid +
+                ", mnamec='" + mnamec + '\'' +
+                ", mnamee='" + mnamee + '\'' +
+                ", msort='" + msort + '\'' +
+                ", mleng='" + mleng + '\'' +
+                ", uptime='" + uptime + '\'' +
+                ", details='" + details + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
+    }
 }

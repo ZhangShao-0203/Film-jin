@@ -10,12 +10,12 @@
 <head>
     <meta charset="UTF-8">
     <title>电影信息管理</title>
-    <link rel="stylesheet" />
-    <link rel="stylesheet" href="css/Site.css" />
-    <link rel="stylesheet" href="css/zy.all.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
-    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet"/>
+    <link rel="stylesheet" href="css/Site.css"/>
+    <link rel="stylesheet" href="css/zy.all.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/admin.css"/>
     <style>
         #show tr td {
             text-align: center;
@@ -76,7 +76,7 @@
                                     <th>电影编号</th>
                                     <th>电影中文名称</th>
                                     <th>电影英文名称</th>
-                                    <th>电影分类 </th>
+                                    <th>电影分类</th>
                                     <th>电影时长</th>
                                     <th>上映时间</th>
                                     <th>简介</th>
@@ -111,41 +111,68 @@
                                         </div>
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
-                                            <form class="am-form am-form-horizontal"
-                                                  action="addActor" method="post" enctype="multipart/form-data"
+                                            <form id="addmovie" class="am-form am-form-horizontal"
+                                                  action="addMovie" method="post" enctype="multipart/form-data"
                                                   target="_parent">
 
                                                 <div class="am-form-group">
-                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        演员名称</label>
+                                                    <label for="mnamee" class="am-u-sm-3 am-form-label">
+                                                        电影名称</label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="text" id="user-name" required
-                                                               placeholder="演员名称" name="acname">
+                                                        <input type="text" id="mnamec" required
+                                                               placeholder="中文名称" name="mnamec">
+                                                        <input type="text" id="mnamee" required
+                                                               placeholder="英文名称" name="mnamee">
+                                                        <small>10字以内...</small>
+                                                    </div>
+                                                </div>
+                                                <div class="am-form-group">
+                                                    <label for="mnamee" class="am-u-sm-3 am-form-label">
+                                                        电影分类</label>
+                                                    <div class="am-u-sm-9">
+                                                        <input type="text" id="msort" required
+                                                               placeholder="类别" name="msort">
                                                         <small>10字以内...</small>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        演员头像</label>
+                                                        电影时长</label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="file" name="doc" id="chanpinzhutu" required>
-                                                        <img src="#" width="80" height="80" id="imgs"/>
+                                                        <input type="text" id="mleng" required
+                                                               placeholder="时长(分钟)" name="mleng">
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
-                                                        演员类型</label>
+                                                        上映时间</label>
                                                     <div class="am-u-sm-9">
-                                                        <select class="textBox" name="acsort" id="state">
-                                                            <option value="导演">导演</option>
-                                                            <option value="演员">演员</option>
-                                                        </select>
+                                                        <input type="datetime-local" name="uptime" id="uptime">
+                                                    </div>
+                                                </div>
+                                                <div class="am-form-group">
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        电影简介</label>
+                                                    <div class="am-u-sm-9">
+                                                        <textarea placeholder="电影简介" requireds
+                                                                  name="details" id="details"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="am-form-group">
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        海报</label>
+                                                    <div class="am-u-sm-9">
+                                                        <input type="file" name="doc" id="doc" required>
+                                                        <img src="#" width="150" height="150" id="imgs"/>
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
                                                         <input type="submit" class="am-btn am-btn-success"
-                                                               value="添加演员"/>
+                                                               value="添加电影"/>
+                                                        <input onclick='btn_add()' type="button"
+                                                               class="am-btn am-btn-success"
+                                                               value="添加电影"/>
                                                     </div>
                                                 </div>
                                             </form>
@@ -163,41 +190,63 @@
 
                 <div id="light" class="white_content">
                     <form class="am-form am-form-horizontal"
-                          action="updateActor" method="post" enctype="multipart/form-data"
-                          target="_parent">
+                          action="addMovie" method="post" enctype="multipart/form-data" target="_parent">
 
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">
-                                演员名称</label>
+                                电影名称</label>
                             <div class="am-u-sm-9">
-                                <input type="hidden" name="acid" value="" id="acid">
+                                <input type="text" id="mnamec1" required
+                                       placeholder="中文名称" name="mnamec">
                                 <input type="text" id="user-name1" required
-                                       placeholder="演员名称" name="acname">
+                                       placeholder="英文名称" name="mnamee">
                                 <small>10字以内...</small>
                             </div>
                         </div>
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">
-                                演员头像</label>
+                                电影分类</label>
                             <div class="am-u-sm-9">
-                                <input type="file" name="doc" id="chanpinzhutu1" required>
-                                <img src="#" width="80" height="80" id="imgs1"/>
+                                <input type="text" id="msort1" required
+                                       placeholder="类别" name="msort">
+                                <small>10字以内...</small>
                             </div>
                         </div>
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">
-                                演员类型</label>
+                                电影时长</label>
                             <div class="am-u-sm-9">
-                                <select class="textBox" name="acsort" id="state1">
-                                    <option value="导演">导演</option>
-                                    <option value="演员">演员</option>
-                                </select>
+                                <input type="text" id="mleng1" required
+                                       placeholder="时长(分钟)" name="mleng">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                上映时间</label>
+                            <div class="am-u-sm-9">
+                                <input type="datetime-local" name="uptime" id="">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                电影简介</label>
+                            <div class="am-u-sm-9">
+                                                        <textarea placeholder="电影简介" requireds
+                                                                  name="details"></textarea>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                海报</label>
+                            <div class="am-u-sm-9">
+                                <input type="file" name="doc" id="chanpinzhutu1" required>
+                                <img src="#" width="150" height="150" id="imgs1"/>
                             </div>
                         </div>
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <input type="submit" class="am-btn am-btn-success"
-                                       value="修改提交"/>
+                                       value="添加电影"/>
                             </div>
                         </div>
                     </form>
@@ -216,19 +265,33 @@
     <script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
     <script src="js/_layout.js"></script>
     <script src="js/plugs/jquery.SuperSlide.source.js"></script>
+    <script src="js/ajaxfileupload.js"></script>
     <script>
-        var num = 1;
-        $(function() {
 
-            $(".tabs").slide({ trigger: "click" });
-            $("#chanpinzhutu").change(function (e) {
+        var num = 1;
+        $(function () {
+            $(".tabs").slide({trigger: "click"});
+            $("#doc").change(function (e) {
                 var imgBox = e.target;
                 uploadImg($('#bcd'), imgBox)
+                $.ajaxFileUpload({
+                    type: "post",
+                    url: "addfileMovie",
+                    secureuri: false,          //一般设置为fals
+                    fileElementId: 'doc',
+                    dataType: "JSON",
+                    success: function (data, status) {
 
+                    },
+                    error: function (data, status, e) {
+                        alert("e")
+                    }
+                });
             })
             $("#chanpinzhutu1").change(function (e) {
                 var imgBox = e.target;
                 uploadImg1($('#bcd'), imgBox)
+
             })
 
             function uploadImg(element, tag) {
@@ -265,6 +328,7 @@
             $(".tabs").slide({trigger: "click"});
             show();
         });
+
         function show() {
             $("#showMovie").empty();
             $.ajax({
@@ -275,33 +339,34 @@
                     var jsonobj = eval("(" + data + ")");
                     for (var i = 0; i < jsonobj.length; i++) {
                         $("#showMovie").append("<tr>\n" +
-                            "                                    <td>"+jsonobj[i].mid+"</td>\n" +
-                            "                                    <td>商品1</td>\n" +
-                            "                                    <td>肉类</td>\n" +
-                            "                                    <td>1111</td>\n" +
-                            "                                    <td>222</td>\n" +
-                            "                                    <td>333</td>\n" +
-                            "                                    <td>444</td>\n" +
-                            "                                    <td>2012-12-10</td>\n" +
+                            "                                    <td>" + jsonobj[i].mid + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].mnamec + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].mnamee + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].msort + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].mleng + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].uptime + "</td>\n" +
+                            "                                    <td>" + jsonobj[i].details + "</td>\n" +
+                            "                                    <td><img src='" + jsonobj[i].photo + "' height='150px' width='150px'></td>\n" +
                             "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
-                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(" + jsonobj[i].mid + ")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                             "                                </tr>")
                     }
                 }
             })
         }
+
         var btn_edit = function (id) {
             $("#light").css({display: "block"})
             $("#fade").css({display: "block"})
             $.ajax({
                 type: "post",
-                url: "editActor",
+                url: "editMovie",
                 data: {acid: id},
                 success: function (data) {
                     var jsonobj = eval("(" + data + ")");
                     $("#acid").val(jsonobj.acid);
                     $("#user-name1").val(jsonobj.acname);
-                    $("#state option[value='"+jsonobj.acsort+"']").attr("selected", true)
+                    $("#state option[value='" + jsonobj.acsort + "']").attr("selected", true)
                 }
             });
 
@@ -312,12 +377,36 @@
                 btnOkClick: function () {
                     $.ajax({
                         type: "post",
-                        url: "deleteActor",
-                        data: {acid: id},
+                        url: "deleteMovie",
+                        data: {mid: id},
                         success: function (data) {
                             show();
                         }
                     });
+                }
+            });
+        }
+        var btn_add = function () {
+//            var formData = new FormData();
+            //var file = $('#chanpinzhutu')[0].files[0];
+//            formData.append("doc",file);
+            //alert(file)
+            $.ajaxFileUpload({
+                type: "post",
+                url: "addMovie",
+                secureuri: false,          //一般设置为fals
+                fileElementId: 'doc',
+                dataType: "json",
+                data: {
+                    "mnamec": JSON.stringify($("#mnamec").val()),
+                    "mnamee": JSON.stringify($("#mnamee").val()),
+                    "msort": JSON.stringify($("#msort").val()),
+                    "mleng": JSON.stringify($("#mleng").val()),
+                    "uptime": JSON.stringify($("#uptime").val()),
+                    "details": JSON.stringify($("#details").val())
+                },
+                success: function (data) {
+                    show();
                 }
             });
         }

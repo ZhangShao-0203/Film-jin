@@ -9,15 +9,19 @@ import lombok.Data;
 import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.annotations.JSON;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+
 @Data
 public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
 
@@ -107,9 +111,28 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
         }
         return "list";
     }
-    public String add() throws IOException {
-        String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
+    @SneakyThrows
+    public String addfile(){
         HttpServletRequest request=ServletActionContext.getRequest();
+        String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
+        String mnamee = request.getParameter("mnamee");
+        System.out.println("+++++"+mnamee);
+        String sacePath=request.getServletContext().getRealPath("/")+"moviephoto/"+newName;
+        File file=new File(sacePath);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        FileUtils.copyFile(doc,file);
+        String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/moviephoto/"+newName;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("readPath",readPath);
+        System.out.println(jsonObject.toString());
+        jsonData=jsonObject.toString();
+        return "success";
+    }
+    public String add() throws IOException {
+        HttpServletRequest request=ServletActionContext.getRequest();
+        String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
         String sacePath=request.getServletContext().getRealPath("/")+"moviephoto/"+newName;
         File file=new File(sacePath);
         if(!file.getParentFile().exists()){
@@ -118,7 +141,6 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
         FileUtils.copyFile(doc,file);
         String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/moviephoto/"+newName;
         movie.setPhoto(readPath);
-        System.out.println("-----------------"+movie.toString());
         int i=movieService.add(movie);
         return "list";
     }

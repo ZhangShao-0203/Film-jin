@@ -5,9 +5,7 @@
 <hibernate-mapping package="com.film.pojo">
     <class name="Movie">
         <id name="mid">
-            <generator class="native">
-                <param name="sequence_name">PRO_REQ</param>
-            </generator>
+            <generator class="increment"></generator>
         </id>
         <property name="mnamec"></property>
         <property name="mnamee"></property>

@@ -5,9 +5,7 @@
 <hibernate-mapping package="com.film.pojo">
     <class name="Admin">
         <id name="aid">
-            <generator class="native">
-                <param name="sequence_name">PRO_REQ</param>
-            </generator>
+            <generator class="increment"></generator>
         </id>
         <property name="aname"></property>
         <property name="apass"></property>
