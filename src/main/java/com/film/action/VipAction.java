@@ -15,7 +15,7 @@ import java.util.List;
 public class VipAction extends ActionSupport implements ModelDriven<Vip> {
 
     private IVipService vipService;
-    Vip vip;
+    Vip vip = new Vip();
     List<Vip> vips = new ArrayList();
     String jsonData;
 
@@ -44,6 +44,7 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
     }
 
     public String delete(){
+       // System.out.println(vip.getVid());
         int i = vipService.delete(vip.getVid());
         return "success";
     }
@@ -54,22 +55,23 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
     }
 
     public String edit(){
-
+       // System.out.println(vip.getVid());
         vip= vipService.get(vip.getVid());
 
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("", vip.getVid());
-        jsonObject.put("",vip.getVname());
-        jsonObject.put("",vip.getVpass());
-        jsonObject.put("",vip.getTel());
+        jsonObject.put("vid", vip.getVid());
+        jsonObject.put("vname",vip.getVname());
+        jsonObject.put("vpass",vip.getVpass());
+        jsonObject.put("tel",vip.getTel());
         jsonData= jsonObject.toString();
 
         return "success";
     }
 
     public String update(){
-
-        return "success";
+        System.out.println(vip.getVid());
+        int i = vipService.update(vip);
+        return "list";
     }
 }

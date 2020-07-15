@@ -42,7 +42,7 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
             jsonArray.put(jsonObject);
         }
 
-        System.out.println(jsonArray.toString());
+        //System.out.println(jsonArray.toString());
         jsonData = jsonArray.toString();
         return "success";
     }

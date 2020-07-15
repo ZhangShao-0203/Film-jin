@@ -16,6 +16,41 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        #showVip tr td {
+            text-align: center;
+        }
+
+        #tbRecord tr th {
+            text-align: center;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 33%;
+            padding: 20px;
+            border: 2px solid orange;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 <div class="dvcontent">
@@ -70,7 +105,7 @@
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
                                             <form class="am-form am-form-horizontal"
-                                                  action="user/addUser1Submit.action" method="post">
+                                                  action="addVip" method="post">
 
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
@@ -84,29 +119,23 @@
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         密码 / Pass </label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="text" id="user-name" required
-                                                               placeholder="姓名 / Name" name="vpass">
+                                                        <input type="text" id="user-pass" required
+                                                               placeholder="密码 / Pass" name="vpass">
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         联系电话 / phone </label>
                                                     <div class="am-u-sm-9">
                                                         <input type="tel" id="user-phone" required
-                                                               placeholder="请输入联系电话" name="tel" /> <small>联系电话...</small>
+                                                               placeholder="请输入联系电话" name="tel"/>
+                                                        <small>联系电话...</small>
                                                     </div>
-                                                </div><%--
-                                                <div class="am-form-group">
-                                                    <label for="user-email" class="am-u-sm-3 am-form-label">
-                                                        籍贯 / place </label>
-                                                    <div class="am-u-sm-9">
-                                                        <input type="text" id="user-email" required placeholder="请输入籍贯"
-                                                               name="place" /> <small>籍贯...</small>
-                                                    </div>
-                                                </div>--%>
+                                                </div>
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                                        <input type="submit" class="am-btn am-btn-success" value="添加用户" />
+                                                        <input type="submit" class="am-btn am-btn-success"
+                                                               value="添加用户"/>
                                                     </div>
                                                 </div>
                                             </form>
@@ -117,11 +146,58 @@
                             </div>
                             <!-- content end -->
                         </div>
-                        <!--添加角色 end--
-                    </ul>
+                        <!--添加角色 end-->
+                    </div>
+                </ul>
+
+                <div id="light" class="white_content">
+                    <form class="am-form am-form-horizontal"
+                          action="updateVip" method="post" enctype="multipart/form-data"
+                          target="_parent">
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                会员名称</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="vname" value="" id="vname">
+                                <input type="text" id="user-name1" required
+                                       placeholder="会员名称" name="vname">
+                                <small>10字以内...</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                会员密码</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="vpass" value="" id="vpass">
+                                <input type="text" id="user-pass1" required
+                                       placeholder="会员密码" name="vpass">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                会员电话</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="tel" value="" id="tel">
+                                <input type="text" id="user-tel1" required
+                                       placeholder="会员电话" name="tel">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="am-btn am-btn-success"
+                                       value="修改提交"/>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="javascript:void(0)"
+                       onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a>
                 </div>
+                <div id="fade" class="black_overlay"></div>
+
             </div>
-            <!--tab end-->
+        </div>
+        <!--tab end-->
 </div>
 
 
@@ -151,7 +227,7 @@
                                             "                                    <td>"+jsonObj[i].vname+"</td>\n" +
                                             "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
                                             "                                    <td>"+jsonObj[i].tel+"</td>\n" +
-                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit("+jsonObj[i].vid+")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
                                             "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                                             "                                </tr>")
                                     }
@@ -189,14 +265,22 @@
                             alert(t);
                         }
 
-                        var btn_edit = function(id) {
-                            $.jq_Panel({
-                                url: "/RawMaterialsType/EditRawMaterialsType?id=" + id,
-                                title: "编辑分类",
-                                dialogModal: true,
-                                iframeWidth: 500,
-                                iframeHeight: 400
+                        var btn_edit = function (id) {
+                            $("#light").css({display: "block"})
+                            $("#fade").css({display: "block"})
+                            $.ajax({
+                                type: "post",
+                                url: "editVip",
+                                data: {vid: id},
+                                success: function (data) {
+                                    var jsonobj = eval("(" + data + ")");
+                                    $("#vid").val(jsonobj.vid);
+                                    $("#user-name1").val(jsonobj.vname);
+                                    $("#user-pass1").val(jsonobj.vpass);
+                                    $("#user-tel1").val(jsonobj.tel);
+                                }
                             });
+
                         }
                         var btn_delete = function(id) {
                             $.jq_Confirm({
@@ -216,10 +300,6 @@
 
 
                     </script>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 

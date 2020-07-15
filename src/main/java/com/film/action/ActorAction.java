@@ -50,7 +50,7 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
            jsonObject.put("acsort",as.getAcsort());
            jsonArray.put(jsonObject);
         }
-        System.out.println(jsonArray.toString());
+        //System.out.println(jsonArray.toString());
         jsonData=jsonArray.toString();
         return "success";
     }
@@ -63,13 +63,13 @@ public class ActorAction extends ActionSupport implements ModelDriven<Actor> {
         return "success";
     }
     public String edit() {
-        System.out.println(actor.getAcid());
+        //System.out.println(actor.getAcid());
         try {
             actor=actorService.get(actor.getAcid());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(actor.toString());
+        //System.out.println(actor.toString());
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("acid",actor.getAcid());
         jsonObject.put("acname",actor.getAcname());

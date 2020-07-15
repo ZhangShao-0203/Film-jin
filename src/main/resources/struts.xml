@@ -32,7 +32,7 @@
             </result>
             <allowed-methods>list,add,delete,edit,update</allowed-methods>
         </action>
-        <!--演员-->
+        <!--电影-->
         <action name="*Movie" class="com.film.action.MovieAction" method="{1}">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">104857600</param>
@@ -50,7 +50,7 @@
         </action>
         <!--会员-->
         <action name="*Vip" class="com.film.action.VipAction" method="{1}">
-            <result name="list" type="redirect">listProduct</result>
+            <result name="list" type="redirect">admin/index.jsp</result>
             <result name="listjsp">/list.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
