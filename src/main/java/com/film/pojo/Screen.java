@@ -10,6 +10,6 @@ public class Screen {
     private int mid;
     private int viid;
     private String stime;
-    private Double spricr;
+    private Double sprice;
 
 }

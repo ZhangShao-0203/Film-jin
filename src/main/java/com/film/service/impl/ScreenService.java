@@ -1,12 +1,16 @@
 package com.film.service.impl;
 
+import com.film.dao.IScreenDao;
 import com.film.pojo.Cinema;
 import com.film.pojo.Screen;
 import com.film.service.IScreenService;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class ScreenService implements IScreenService {
+    private IScreenDao screenDao;
     @Override
     public int add(Screen screen) {
         return 0;

@@ -1,12 +1,16 @@
 package com.film.service.impl;
 
+import com.film.dao.IOrdertDao;
 import com.film.pojo.Cinema;
 import com.film.pojo.Ordert;
 import com.film.service.IOrderService;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class OrderService implements IOrderService {
+    private IOrdertDao ordertDao;
     @Override
     public int add(Ordert ordert) {
         return 0;

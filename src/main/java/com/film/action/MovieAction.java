@@ -31,8 +31,10 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
 
     @Override
     public Movie getModel() {
+
         return movie;
     }
+
     public String list() {
         try {
             movies=movieService.list();
@@ -53,7 +55,7 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
             jsonObject.put("photo",as.getPhoto());
             jsonArray.put(jsonObject);
         }
-        System.out.println(jsonArray.toString());
+        //System.out.println(jsonArray.toString());
         jsonData=jsonArray.toString();
         return "success";
     }

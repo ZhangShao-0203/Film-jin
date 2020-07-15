@@ -4,7 +4,9 @@ import com.film.pojo.Cinema;
 import com.film.service.ICinemaService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import lombok.Data;
 
+@Data
 public class CinemaAction extends ActionSupport implements ModelDriven<Cinema> {
 
     private ICinemaService cinemaService;

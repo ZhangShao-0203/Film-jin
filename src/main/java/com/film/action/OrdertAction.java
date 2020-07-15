@@ -4,7 +4,9 @@ import com.film.pojo.Ordert;
 import com.film.service.IOrderService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import lombok.Data;
 
+@Data
 public class OrdertAction extends ActionSupport implements ModelDriven<Ordert> {
 
     private IOrderService orderService;

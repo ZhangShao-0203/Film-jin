@@ -2,10 +2,13 @@ package com.film.service.impl;
 
 import com.film.pojo.Choose;
 import com.film.service.IChooseService;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class ChooseService implements IChooseService {
+    private IChooseService chooseService;
     @Override
     public int add(Choose choose) {
         return 0;
