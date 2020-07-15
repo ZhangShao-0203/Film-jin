@@ -27,7 +27,11 @@ public class VipDao implements IVipDao {
 
     @Override
     public int delete(int id) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        Vip vip = session.get(Vip.class, id);
+        System.out.println(vip.toString());
+        session.delete(vip);
+        return 1;
     }
 
     @Override

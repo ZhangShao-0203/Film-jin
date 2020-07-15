@@ -184,23 +184,17 @@
                                 btnOkClick: function() {
                                     $.ajax({
                                         type: "post",
-                                        url: "/RawMaterialsType/DeleteRawMaterialsType",
-                                        data: { id: id },
+                                        url: "deleteVip",
+                                        data: { vid: id },
                                         success: function(data) {
-                                            if(data > 0) {
-                                                $.jq_Alert({
-                                                    message: "删除成功",
-                                                    btnOkClick: function() {
-                                                        page1();
-                                                    }
-                                                });
-                                            }
+                                            showVip();
                                         }
                                     });
                                 }
                             });
                         }
-                        $(function () {
+                        function showVip(){
+                            $("#showVip").empty();
                             $.ajax({
                                 url:"listVip",
                                 type:"post",
@@ -215,12 +209,13 @@
                                             "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
                                             "                                    <td>"+jsonObj[i].tel+"</td>\n" +
                                             "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
-                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                                             "                                </tr>")
                                     }
                                 }
                             })
-                        })
+                        }
+
                     </script>
 
             </div>

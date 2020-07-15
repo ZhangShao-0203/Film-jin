@@ -1,12 +1,17 @@
 package com.film.service.impl;
 
+import com.film.dao.IVideoDao;
 import com.film.pojo.Cinema;
 import com.film.pojo.Video;
 import com.film.service.IVideoService;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class VideoService implements IVideoService {
+    private IVideoDao videoDao;
+
     @Override
     public int add(Video video) {
         return 0;
@@ -29,6 +34,6 @@ public class VideoService implements IVideoService {
 
     @Override
     public List<Video> list() {
-        return null;
+        return videoDao.list();
     }
 }

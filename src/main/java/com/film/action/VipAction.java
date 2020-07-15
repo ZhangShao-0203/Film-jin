@@ -38,8 +38,13 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
             jsonObject.put("tel",v.getTel());
             jsonArray.put(jsonObject);
         }
-        System.out.println(jsonArray.toString());
+        //System.out.println(jsonArray.toString());
         jsonData= jsonArray.toString();
+        return "success";
+    }
+
+    public String delete(){
+        int i = vipService.delete(vip.getVid());
         return "success";
     }
 }

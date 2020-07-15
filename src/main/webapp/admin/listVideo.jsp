@@ -47,13 +47,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="showVideo">
-                                <tr>
-                                    <td>1</td>
-                                    <td>商品1</td>
-                                    <td>肉类</td>
-                                    <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
-                                    <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
-                                </tr>
+
                                 </tbody>
 
                             </table>
@@ -180,6 +174,26 @@
                 }
             });
         }
+        $(function () {
+            $.ajax({
+                url:"listVideo",
+                type:"post",
+                data:{},
+                dataType:"json",
+                success:function(data) {
+                    var jsonObj=eval("("+data+")");
+                    for (var i = 0; i <jsonObj.length ; i++) {
+                        $("#showVideo").append("<tr>\n" +
+                            "                                    <td>"+jsonObj[i].viid+"</td>\n" +
+                            "                                    <td>"+jsonObj[i].viname+"</td>\n" +
+                            "                                    <td>"+jsonObj[i].cid+"</td>\n" +
+                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                            "                                </tr>")
+                    }
+                }
+            })
+        })
     </script>
 
 </div>

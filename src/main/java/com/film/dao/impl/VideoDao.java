@@ -3,10 +3,19 @@ package com.film.dao.impl;
 import com.film.dao.IVideoDao;
 import com.film.pojo.Cinema;
 import com.film.pojo.Video;
+import lombok.Data;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class VideoDao implements IVideoDao {
+
+    private SessionFactory sessionFactory;
+
     @Override
     public int add(Video video) {
         return 0;
@@ -29,6 +38,11 @@ public class VideoDao implements IVideoDao {
 
     @Override
     public List<Video> list() {
-        return null;
+
+        Session session = sessionFactory.getCurrentSession();
+        List<Video> res = new ArrayList();
+        Query q = session.createQuery("from Video");
+        res= q.list();
+        return res;
     }
 }
