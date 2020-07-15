@@ -6,11 +6,12 @@ import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 @Data
-public class ActorDao implements IActorDao {
+public class ActorDao extends HibernateTemplate implements IActorDao {
     private SessionFactory sessionFactory;
     @Override
     public int add(Actor actor) {
@@ -21,7 +22,10 @@ public class ActorDao implements IActorDao {
 
     @Override
     public Actor get(int id) {
-        return null;
+        Session s = sessionFactory.getCurrentSession();
+        Actor actor=s.get(Actor.class,id);
+        System.out.println(actor.toString());
+        return actor;
     }
 
     @Override
@@ -35,7 +39,9 @@ public class ActorDao implements IActorDao {
 
     @Override
     public int update(Actor actor) {
-        return 0;
+        Session s = sessionFactory.getCurrentSession();
+        s.update(actor);
+        return 2;
     }
 
     @Override

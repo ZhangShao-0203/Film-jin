@@ -17,7 +17,7 @@ public class ActorService implements IActorService {
 
     @Override
     public Actor get(int id) {
-        return null;
+        return ActorDao.get(id);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ActorService implements IActorService {
 
     @Override
     public int update(Actor actor) {
-        return 0;
+        return ActorDao.update(actor);
     }
 
     @Override
