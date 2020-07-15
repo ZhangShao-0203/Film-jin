@@ -5,6 +5,7 @@ import com.film.pojo.Movie;
 import com.film.service.IMovieService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import lombok.Data;
 import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@Data
 public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
 
     private IMovieService movieService;
