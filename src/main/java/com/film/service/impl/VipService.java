@@ -19,7 +19,7 @@ public class VipService implements IVipService {
     }
 
     @Override
-    public Cinema get(int id) {
+    public Vip get(int id) {
         return vipDao.get(id);
     }
 

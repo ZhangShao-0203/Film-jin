@@ -69,6 +69,12 @@
     <bean id="vipService" class="com.film.service.impl.VipService"></bean>
     <bean id="vipDao" class="com.film.dao.impl.VipDao" ></bean>
 
+    <bean id="videoAction" class="com.film.action.VideoAction" scope="prototype"></bean>
+    <bean id="videoService" class="com.film.service.impl.VideoService"></bean>
+    <bean id="videoDao" class="com.film.dao.impl.VideoDao" ></bean>
+
+
+
     <bean id="movieAction" class="com.film.action.MovieAction" scope="prototype"></bean>
     <bean id="movieService" class="com.film.service.impl.MovieService"></bean>
     <bean id="movieDao" class="com.film.dao.impl.MovieDao" ></bean>

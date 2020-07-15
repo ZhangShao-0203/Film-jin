@@ -122,8 +122,7 @@
                 </div>
             </div>
             <!--tab end-->
-
-                    </div>
+</div>
 
 
                     <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
@@ -135,9 +134,30 @@
                         $(function() {
 
                             $(".tabs").slide({ trigger: "click" });
-
+                            showVip();
                         });
-
+                        function showVip(){
+                            $("#showVip").empty();
+                            $.ajax({
+                                url:"listVip",
+                                type:"post",
+                                data:{},
+                                dataType:"json",
+                                success:function(data) {
+                                    var jsonObj=eval("("+data+")");
+                                    for (var i = 0; i <jsonObj.length ; i++) {
+                                        $("#showVip").append("<tr>\n" +
+                                            "                                    <td>"+jsonObj[i].vid+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].vname+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
+                                            "                                    <td>"+jsonObj[i].tel+"</td>\n" +
+                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                                            "                                </tr>")
+                                    }
+                                }
+                            })
+                        }
 
                         var btn_save = function() {
                             var pid = $("#RawMaterialsTypePageId  option:selected").val();
@@ -185,7 +205,7 @@
                                     $.ajax({
                                         type: "post",
                                         url: "deleteVip",
-                                        data: { vid: id },
+                                        data: {vid:id },
                                         success: function(data) {
                                             showVip();
                                         }
@@ -193,32 +213,14 @@
                                 }
                             });
                         }
-                        function showVip(){
-                            $("#showVip").empty();
-                            $.ajax({
-                                url:"listVip",
-                                type:"post",
-                                data:{},
-                                dataType:"json",
-                                success:function(data) {
-                                    var jsonObj=eval("("+data+")");
-                                    for (var i = 0; i <jsonObj.length ; i++) {
-                                        $("#showVip").append("<tr>\n" +
-                                            "                                    <td>"+jsonObj[i].vid+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].vname+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].tel+"</td>\n" +
-                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
-                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
-                                            "                                </tr>")
-                                    }
-                                }
-                            })
-                        }
+
 
                     </script>
-
+                </ul>
             </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

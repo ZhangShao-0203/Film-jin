@@ -47,4 +47,29 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
         int i = vipService.delete(vip.getVid());
         return "success";
     }
+
+    public String add(){
+
+        return "list";
+    }
+
+    public String edit(){
+
+        vip= vipService.get(vip.getVid());
+
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("", vip.getVid());
+        jsonObject.put("",vip.getVname());
+        jsonObject.put("",vip.getVpass());
+        jsonObject.put("",vip.getTel());
+        jsonData= jsonObject.toString();
+
+        return "success";
+    }
+
+    public String update(){
+
+        return "success";
+    }
 }

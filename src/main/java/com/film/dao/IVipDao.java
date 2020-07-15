@@ -9,7 +9,7 @@ public interface IVipDao {
     //添加用户
     int add(Vip vip);
     //查询用户
-    Cinema get(int id);
+    Vip get(int id);
     //删除用户
     int delete(int id);
     //修改用户
