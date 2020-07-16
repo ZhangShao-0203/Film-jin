@@ -26,7 +26,7 @@
                 <param name="allowedExtensions">txt,jpg,png</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="list" type="redirect">admin/index.jsp</result>
+            <result name="list" type="redirect">admin/listActor.jsp</result>
             <result name="success" type="json">
                 <param name="root">jsonData</param>
             </result>
@@ -39,7 +39,7 @@
                 <param name="allowedExtensions">txt,jpg,png</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="list" type="redirect">admin/index.jsp</result>
+            <result name="list" type="redirect">/admin/listMovie.jsp</result>
             <result name="listjsp">/list.jsp</result>
             <result name="edit">/edit.jsp</result>
             <result name="index">/index.jsp</result>
