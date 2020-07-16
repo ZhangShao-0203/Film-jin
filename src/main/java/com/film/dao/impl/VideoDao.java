@@ -28,7 +28,9 @@ public class VideoDao implements IVideoDao {
 
     @Override
     public int delete(int id) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(id);
+        return 1;
     }
 
     @Override

@@ -80,7 +80,6 @@
                 success: function (data) {
                     var jsonobj = eval("(" + data + ")");
                     $("#user-name1").val(jsonobj.apass);
-                    alert("ss")
                 }
             });
         });

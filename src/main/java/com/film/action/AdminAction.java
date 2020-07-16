@@ -16,7 +16,7 @@ import java.util.List;
 public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
 
     private IAdminService adminService;
-    Admin admin;
+    Admin admin = new Admin();
     List<Admin> admins=new ArrayList();
     String jsonData;
 
@@ -66,12 +66,12 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
     }
 
     public String login(){
-        //System.out.println(admin.toString());
+        System.out.println(admin.toString());
         Admin admin1 = adminService.getAdmin(admin);
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.setAttribute("admin",admin1);
-        // System.out.println(admin1);
+        System.out.println(admin1);
         if(admin1!=null){
             return "listjsp";
         }else{

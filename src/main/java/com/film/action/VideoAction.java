@@ -41,9 +41,14 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
             jsonObject.put("cid",v.getCid());
             jsonArray.put(jsonObject);
         }
-
         //System.out.println(jsonArray.toString());
         jsonData = jsonArray.toString();
         return "success";
     }
+
+    public String delete(){
+        int i = videoService.delete(video.getViid());
+        return "success";
+    }
+
 }
