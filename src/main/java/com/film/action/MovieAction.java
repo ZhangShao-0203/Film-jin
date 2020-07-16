@@ -17,9 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @Data
@@ -32,6 +30,8 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
     private String state = null;
     private File doc;
     private String docFileName;
+    private List<String> ry=new ArrayList();
+    private Set<Actor> actors=new HashSet();
 
     @Override
     public Movie getModel() {
@@ -57,6 +57,18 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
             jsonObject.put("uptime",as.getUptime());
             jsonObject.put("details",as.getDetails());
             jsonObject.put("photo",as.getPhoto());
+            Set<Actor> actors=as.getActors();
+
+            JSONArray jsonArray1=new JSONArray();
+            for (Actor a:actors){
+                JSONObject  jsonObject1=new JSONObject();
+                jsonObject1.put("acid",a.getAcid());
+                jsonObject1.put("acname",a.getAcname());
+                jsonObject1.put("acphoto",a.getAcphoto());
+                jsonObject1.put("acsort",a.getAcsort());
+                jsonArray1.put(jsonObject1);
+            }
+            jsonObject.put("arr",jsonArray1);
             jsonArray.put(jsonObject);
         }
         //System.out.println(jsonArray.toString());
@@ -127,6 +139,12 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
         return "success";
     }
     public String add() throws IOException {
+        for (String r:ry){
+           Actor actor=new Actor();
+           Integer i= Integer.parseInt(r);
+           actor.setAcid(i);
+           actors.add(actor);
+        }
         HttpServletRequest request=ServletActionContext.getRequest();
         String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
         String sacePath=request.getServletContext().getRealPath("/")+"moviephoto/"+newName;
@@ -137,6 +155,7 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
         FileUtils.copyFile(doc,file);
         String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/moviephoto/"+newName;
         movie.setPhoto(readPath);
+        movie.setActors(actors);
         int i=movieService.add(movie);
         return "list";
     }

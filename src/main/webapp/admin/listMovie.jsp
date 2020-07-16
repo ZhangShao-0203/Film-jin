@@ -81,6 +81,7 @@
                                     <th>上映时间</th>
                                     <th>简介</th>
                                     <th>海报</th>
+                                    <th>人员</th>
                                     <th>编辑</th>
                                     <th>删除</th>
                                 </tr>
@@ -170,7 +171,12 @@
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         人员</label>
                                                     <div class="am-u-sm-9" id="tj">
+                                                        <select style="color:blue;" id="dy" name="ry[0]">
 
+                                                        </select>
+                                                        <select id="yy" name="ry[1]">
+
+                                                        </select>
                                                     </div>
                                                     <div class="am-u-sm-9">
                                                         <input type="button" id="btn" value="添加">
@@ -200,14 +206,13 @@
                 </ul>
 
                 <div id="light" class="white_content">
-                    <form id="updatemovie" class="am-form am-form-horizontal" action="updateMovie" method="post"
-                          enctype="multipart/form-data">
+                    <form id="updatemovie" class="am-form am-form-horizontal" action="updateMovie"
+                          method="post" enctype="multipart/form-data">
 
                         <div class="am-form-group">
                             <label for="mnamee" class="am-u-sm-3 am-form-label">
                                 电影名称</label>
                             <div class="am-u-sm-9">
-                                <input type="hidden" id="mid1" name="mid">
                                 <input type="text" id="mnamec1" required
                                        placeholder="中文名称" name="mnamec">
                                 <input type="text" id="mnamee1" required
@@ -257,9 +262,28 @@
                             </div>
                         </div>
                         <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                人员</label>
+                            <div class="am-u-sm-9" id="tj1">
+                                <select style="color:blue;" id="dy1" name="ry[0]">
+
+                                </select>
+                                <select id="yy1" name="ry[1]">
+
+                                </select>
+                            </div>
+                            <div class="am-u-sm-9">
+                                <input type="button" id="btn1" value="添加">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <input type="submit" class="am-btn am-btn-success"
-                                       value="修改电影"/>
+                                       value="添加电影"/>
+                                <input onclick='btn_add()' type="button"
+                                       class="am-btn am-btn-success"
+                                       value="添加电影"/>
                             </div>
                         </div>
                     </form>
@@ -281,30 +305,18 @@
     <script src="js/ajaxfileupload.js"></script>
     <script>
 
-        var num = 1;
+        var num = 2;
+        var num1= 2;
         $(function () {
             $("#btn").click(function () {
-//                var aa = "        <select class=\"select1\">" +
-//                    "            <option value=\"\">1</option>" +
-//                    "            <option value=\"2\">2</option>" +
-//                    "            <option value=\"3\">3</option>" +
-//                    "        </select>";
-//                $("#tj").append(aa);
-                $.ajax({
-                    url: "listActor",
-                    type: "post",
-                    dataType: "json",
-                    success: function (data) {
-                        $("#tj").append("<select class='select'></select>")
-                        var jsonobj = eval("(" + data + ")");
-                        for (var i = 0; i < jsonobj.length; i++) {
-                            if (jsonobj[i].acsort == "演员") {
-                                $(".select").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
-                            }
-                        }
-                    }
-                })
+                $("#tj").append($("#yy").clone().attr("name", "ry[" + num + "]"))
+                num++;
             })
+            $("#btn1").click(function () {
+                $("#tj1").append($("#yy1").clone().attr("name", "ry[" + num1 + "]"))
+                num1++;
+            })
+            showyy();
             $(".tabs").slide({trigger: "click"});
             $("#doc").change(function (e) {
                 var imgBox = e.target;
@@ -364,6 +376,44 @@
             show();
         });
 
+        function showyy() {
+            $.ajax({
+                url: "listActor",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    for (var i = 0; i < jsonobj.length; i++) {
+                        if (jsonobj[i].acsort == "演员") {
+                            $("#yy").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
+                        }
+                        if (jsonobj[i].acsort == "导演") {
+                            $("#dy").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
+                        }
+                    }
+                }
+            })
+        }
+
+        function showyy1() {
+            $.ajax({
+                url: "listActor",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    for (var i = 0; i < jsonobj.length; i++) {
+                        if (jsonobj[i].acsort == "演员") {
+                            $("#yy1").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
+                        }
+                        if (jsonobj[i].acsort == "导演") {
+                            $("#dy1").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
+                        }
+                    }
+                }
+            })
+        }
+
         function show() {
             $("#showMovie").empty();
             $.ajax({
@@ -373,6 +423,16 @@
                 success: function (data) {
                     var jsonobj = eval("(" + data + ")");
                     for (var i = 0; i < jsonobj.length; i++) {
+                        var aa="";
+                        var dy="";
+                        for (var a = 0; a < jsonobj[i].arr.length; a++) {
+                            if(jsonobj[i].arr[a].acsort=="演员"){
+                                aa += jsonobj[i].arr[a].acname+" ";
+                            }
+                            if(jsonobj[i].arr[a].acsort=="导演"){
+                                dy=jsonobj[i].arr[a].acname;
+                            }
+                        }
                         $("#showMovie").append("<tr>\n" +
                             "                                    <td>" + jsonobj[i].mid + "</td>\n" +
                             "                                    <td>" + jsonobj[i].mnamec + "</td>\n" +
@@ -382,15 +442,20 @@
                             "                                    <td>" + jsonobj[i].uptime + "</td>\n" +
                             "                                    <td>" + jsonobj[i].details + "</td>\n" +
                             "                                    <td><img src='" + jsonobj[i].photo + "' height='150px' width='150px'></td>\n" +
+                            "                                    <td><span style='color:red '>"+dy+"</span><br>" + aa + "</lable></td>\n" +
                             "                                    <td class=\"edit\"><button onclick=\"btn_edit(" + jsonobj[i].mid + ")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
                             "                                    <td class=\"delete\"><button onclick=\"btn_delete(" + jsonobj[i].mid + ")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                             "                                </tr>")
                     }
+
                 }
+
+
             })
         }
 
         var btn_edit = function (id) {
+            showyy1();
             $("#light").css({display: "block"})
             $("#fade").css({display: "block"})
             $.ajax({
