@@ -54,6 +54,7 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
 
     public String add(){
         int i = videoService.add(video);
+
         return "success";
     }
     public String edit(){

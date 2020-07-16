@@ -14,12 +14,12 @@ public class VideoService implements IVideoService {
 
     @Override
     public int add(Video video) {
-        return 0;
+        return videoDao.add(video);
     }
 
     @Override
     public Cinema get(int id) {
-        return null;
+        return videoDao.get(id);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class VideoService implements IVideoService {
 
     @Override
     public int update(Video video) {
-        return 0;
+        return videoDao.update(video);
     }
 
     @Override

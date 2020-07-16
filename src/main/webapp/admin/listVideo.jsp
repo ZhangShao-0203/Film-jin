@@ -113,7 +113,7 @@
                                                         放映厅名称</label>
                                                     <div class="am-u-sm-9">
                                                         <input type="text" id="name" required
-                                                               placeholder="放映厅名称" name="viid">
+                                                               placeholder="放映厅名称" name="viname">
                                                         <small>10字以内...</small>
                                                     </div>
                                                 </div>

@@ -217,7 +217,7 @@
 <body>
 <div class="dvheader">
     <div class="dvheadertools">
-        <span class="headerspantitle">进销存管理系统</span>
+        <span class="headerspantitle">JJ电影管理系统</span>
         <ul class="headerultools">
 
             <li class="headerlitools_info headerlitools" style="background-color: #075597">

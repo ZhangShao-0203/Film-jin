@@ -9,7 +9,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class VideoDao implements IVideoDao {
@@ -19,6 +21,8 @@ public class VideoDao implements IVideoDao {
     @Override
     public int add(Video video) {
         Session session = sessionFactory.getCurrentSession();
+        Set<Video> videos = new HashSet();
+
         int i = (int)session.save(video);
         return i;
     }
