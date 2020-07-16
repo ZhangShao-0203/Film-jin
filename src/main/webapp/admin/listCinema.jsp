@@ -179,7 +179,7 @@
         });
 
        function showCinema() {
-
+           $("#showCinema").empty();
            $.ajax({
                url:"listCinema",
                type:"post",

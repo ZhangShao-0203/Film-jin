@@ -55,8 +55,8 @@ public class CinemaAction extends ActionSupport implements ModelDriven<Cinema> {
         cinema = cinemaService.get(cinema.getCid());
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("",cinema.getCid());
-        jsonObject.put("",cinema.getCname());
+        jsonObject.put("cid",cinema.getCid());
+        jsonObject.put("cname",cinema.getCname());
         jsonData = jsonObject.toString();
         return "success";
     }

@@ -60,8 +60,7 @@
         <!--放映厅-->
         <action name="*Video" class="com.film.action.VideoAction" method="{1}">
             <result name="list" type="redirect">listProduct</result>
-            <result name="listjsp">/list.jsp</result>
-            <result name="index">/admin/index.jsp</result>
+            <result name="index">/admin/listVideo.jsp</result>
             <result name="success" type="json">
                 <param name="root">jsonData</param>
             </result>
