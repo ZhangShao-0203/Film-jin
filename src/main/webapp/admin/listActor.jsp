@@ -111,7 +111,7 @@
                                              style="padding-top: 30px;">
                                             <form class="am-form am-form-horizontal"
                                                   action="addActor" method="post" enctype="multipart/form-data"
-                                                  target="_parent">
+                                                  >
 
                                                 <div class="am-form-group">
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
@@ -162,7 +162,7 @@
                 <div id="light" class="white_content">
                     <form class="am-form am-form-horizontal"
                           action="updateActor" method="post" enctype="multipart/form-data"
-                          target="_parent">
+                          >
 
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">

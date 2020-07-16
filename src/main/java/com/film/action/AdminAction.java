@@ -7,7 +7,6 @@ import com.opensymphony.xwork2.ModelDriven;
 import lombok.Data;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONObject;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;

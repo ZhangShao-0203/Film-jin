@@ -66,7 +66,7 @@
                 </ul>
             </div>
             <div class="bd">
-                <ul style="display: block;padding: 20px;">
+                <ul id="show" style="display: block;padding: 20px;">
                     <li>
                         <!--分页显示角色信息 start-->
                         <div id="dv1">
@@ -96,7 +96,7 @@
                         <!--分页显示角色信息 end-->
                     </li>
                 </ul>
-                <ul class="theme-popbod dform" style="display: none;">
+                <ul id="add" class="theme-popbod dform" style="display: none;">
                     <div class="am-cf admin-main" style="padding-top: 0px;">
                         <!-- content start -->
 
@@ -111,9 +111,8 @@
                                         </div>
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
-                                            <form id="addmovie" class="am-form am-form-horizontal"
-                                                  action="addMovie" method="post" enctype="multipart/form-data"
-                                                  target="_parent">
+                                            <form id="addmovie" class="am-form am-form-horizontal" action="addMovie"
+                                                  method="post" enctype="multipart/form-data">
 
                                                 <div class="am-form-group">
                                                     <label for="mnamee" class="am-u-sm-3 am-form-label">
@@ -147,7 +146,7 @@
                                                     <label for="user-name" class="am-u-sm-3 am-form-label">
                                                         上映时间</label>
                                                     <div class="am-u-sm-9">
-                                                        <input type="datetime-local" name="uptime" id="uptime">
+                                                        <input type="date" name="uptime" id="uptime">
                                                     </div>
                                                 </div>
                                                 <div class="am-form-group">
@@ -164,8 +163,20 @@
                                                     <div class="am-u-sm-9">
                                                         <input type="file" name="doc" id="doc" required>
                                                         <img src="#" width="150" height="150" id="imgs"/>
+                                                        <input type="hidden" name="photo" id="photo">
                                                     </div>
                                                 </div>
+                                                <div class="am-form-group">
+                                                    <label for="user-name" class="am-u-sm-3 am-form-label">
+                                                        人员</label>
+                                                    <div class="am-u-sm-9" id="tj">
+
+                                                    </div>
+                                                    <div class="am-u-sm-9">
+                                                        <input type="button" id="btn" value="添加">
+                                                    </div>
+                                                </div>
+
                                                 <div class="am-form-group">
                                                     <div class="am-u-sm-9 am-u-sm-push-3">
                                                         <input type="submit" class="am-btn am-btn-success"
@@ -189,22 +200,23 @@
                 </ul>
 
                 <div id="light" class="white_content">
-                    <form class="am-form am-form-horizontal"
-                          action="addMovie" method="post" enctype="multipart/form-data" target="_parent">
+                    <form id="updatemovie" class="am-form am-form-horizontal" action="updateMovie" method="post"
+                          enctype="multipart/form-data">
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                            <label for="mnamee" class="am-u-sm-3 am-form-label">
                                 电影名称</label>
                             <div class="am-u-sm-9">
+                                <input type="hidden" id="mid1" name="mid">
                                 <input type="text" id="mnamec1" required
                                        placeholder="中文名称" name="mnamec">
-                                <input type="text" id="user-name1" required
+                                <input type="text" id="mnamee1" required
                                        placeholder="英文名称" name="mnamee">
                                 <small>10字以内...</small>
                             </div>
                         </div>
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                            <label for="mnamee" class="am-u-sm-3 am-form-label">
                                 电影分类</label>
                             <div class="am-u-sm-9">
                                 <input type="text" id="msort1" required
@@ -224,7 +236,7 @@
                             <label for="user-name" class="am-u-sm-3 am-form-label">
                                 上映时间</label>
                             <div class="am-u-sm-9">
-                                <input type="datetime-local" name="uptime" id="">
+                                <input type="date" name="uptime" id="uptime1">
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -232,21 +244,22 @@
                                 电影简介</label>
                             <div class="am-u-sm-9">
                                                         <textarea placeholder="电影简介" requireds
-                                                                  name="details"></textarea>
+                                                                  name="details" id="details1"></textarea>
                             </div>
                         </div>
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">
                                 海报</label>
                             <div class="am-u-sm-9">
-                                <input type="file" name="doc" id="chanpinzhutu1" required>
+                                <input type="file" name="doc" id="doc1" required>
                                 <img src="#" width="150" height="150" id="imgs1"/>
+                                <input type="hidden" name="photo" id="photo1">
                             </div>
                         </div>
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <input type="submit" class="am-btn am-btn-success"
-                                       value="添加电影"/>
+                                       value="修改电影"/>
                             </div>
                         </div>
                     </form>
@@ -270,32 +283,33 @@
 
         var num = 1;
         $(function () {
+            $("#btn").click(function () {
+//                var aa = "        <select class=\"select1\">" +
+//                    "            <option value=\"\">1</option>" +
+//                    "            <option value=\"2\">2</option>" +
+//                    "            <option value=\"3\">3</option>" +
+//                    "        </select>";
+//                $("#tj").append(aa);
+                $.ajax({
+                    url: "listActor",
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#tj").append("<select class='select'></select>")
+                        var jsonobj = eval("(" + data + ")");
+                        for (var i = 0; i < jsonobj.length; i++) {
+                            if (jsonobj[i].acsort == "演员") {
+                                $(".select").append("<option value='" + jsonobj[i].acid + "'>" + jsonobj[i].acname + "</option>")
+                            }
+                        }
+                    }
+                })
+            })
             $(".tabs").slide({trigger: "click"});
             $("#doc").change(function (e) {
                 var imgBox = e.target;
-                uploadImg($('#bcd'), imgBox)
-                $.ajaxFileUpload({
-                    type: "post",
-                    url: "addfileMovie",
-                    secureuri: false,          //一般设置为fals
-                    fileElementId: 'doc',
-                    dataType: "JSON",
-                    success: function (data, status) {
-
-                    },
-                    error: function (data, status, e) {
-                        alert("e")
-                    }
-                });
-            })
-            $("#chanpinzhutu1").change(function (e) {
-                var imgBox = e.target;
-                uploadImg1($('#bcd'), imgBox)
-
-            })
-
-            function uploadImg(element, tag) {
-                var file = tag.files[0];
+//               uploadImg($('#bcd'), imgBox)
+                var file = imgBox.files[0];
                 var imgSrc;
                 if (!/image\/\w+/.test(file.type)) {
                     alert("看清楚，这个需要图片！");
@@ -307,11 +321,30 @@
                     imgSrc = this.result;
                     $("#imgs").attr("src", imgSrc);
 
-                };
-            }
+                }
+//                $.ajaxFileUpload({
+//                    type: "post",
+//                    url: "addfileMovie",
+//                    secureuri: false,//一般设置为fals
+////                    cache:false,
+//                    fileElementId: 'doc',
+//                    dataType: "JSON",
+//                    success: function (data, status) {
+//                        var jsonObj = $.parseJSON(data.replace(/<.*?>/ig,""));
+//                        $("#photo").val(jsonObj);
+//
+//
+//                    },
+//                    error: function (data, status, e) {
+//                        alert("e")
+//                    }
+//                });
 
-            function uploadImg1(element, tag) {
-                var file = tag.files[0];
+            })
+            $("#doc1").change(function (e) {
+                var imgBox = e.target;
+//               uploadImg($('#bcd'), imgBox)
+                var file = imgBox.files[0];
                 var imgSrc;
                 if (!/image\/\w+/.test(file.type)) {
                     alert("看清楚，这个需要图片！");
@@ -322,8 +355,10 @@
                 reader.onload = function () {
                     imgSrc = this.result;
                     $("#imgs1").attr("src", imgSrc);
-                };
-            }
+                }
+
+            })
+
 
             $(".tabs").slide({trigger: "click"});
             show();
@@ -347,7 +382,7 @@
                             "                                    <td>" + jsonobj[i].uptime + "</td>\n" +
                             "                                    <td>" + jsonobj[i].details + "</td>\n" +
                             "                                    <td><img src='" + jsonobj[i].photo + "' height='150px' width='150px'></td>\n" +
-                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(" + jsonobj[i].mid + ")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
                             "                                    <td class=\"delete\"><button onclick=\"btn_delete(" + jsonobj[i].mid + ")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                             "                                </tr>")
                     }
@@ -361,12 +396,17 @@
             $.ajax({
                 type: "post",
                 url: "editMovie",
-                data: {acid: id},
+                data: {mid: id},
                 success: function (data) {
                     var jsonobj = eval("(" + data + ")");
-                    $("#acid").val(jsonobj.acid);
-                    $("#user-name1").val(jsonobj.acname);
-                    $("#state option[value='" + jsonobj.acsort + "']").attr("selected", true)
+                    $("#mid1").val(jsonobj.mid);
+                    $("#mnamec1").val(jsonobj.mnamec);
+                    $("#mnamee1").val(jsonobj.mnamee);
+                    $("#msort1").val(jsonobj.msort);
+                    $("#mleng1").val(jsonobj.mleng);
+                    $("#uptime1").val(jsonobj.uptime);
+                    $("#details1").val(jsonobj.details);
+                    $("#photo1").val(jsonobj.photo);
                 }
             });
 
@@ -387,26 +427,23 @@
             });
         }
         var btn_add = function () {
-//            var formData = new FormData();
-            //var file = $('#chanpinzhutu')[0].files[0];
-//            formData.append("doc",file);
-            //alert(file)
-            $.ajaxFileUpload({
+            $.ajax({
                 type: "post",
                 url: "addMovie",
-                secureuri: false,          //一般设置为fals
-                fileElementId: 'doc',
                 dataType: "json",
                 data: {
-                    "mnamec": JSON.stringify($("#mnamec").val()),
-                    "mnamee": JSON.stringify($("#mnamee").val()),
-                    "msort": JSON.stringify($("#msort").val()),
-                    "mleng": JSON.stringify($("#mleng").val()),
-                    "uptime": JSON.stringify($("#uptime").val()),
-                    "details": JSON.stringify($("#details").val())
+                    "mnamec": $("#mnamec").val(),
+                    "mnamee": $("#mnamee").val(),
+                    "msort": $("#msort").val(),
+                    "mleng": $("#mleng").val(),
+                    "uptime": $("#uptime").val(),
+                    "details": $("#details").val(),
+                    "photo": $("#photo").val()
                 },
                 success: function (data) {
-                    show();
+                    $(location).attr("href", "www.baidu.com")
+//                    $("#add").css(display,"none");
+//                    $("#show").css( display,"block");
                 }
             });
         }

@@ -113,21 +113,17 @@ public class MovieAction extends ActionSupport implements ModelDriven<Movie> {
     }
     @SneakyThrows
     public String addfile(){
-        HttpServletRequest request=ServletActionContext.getRequest();
-        String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
-        String mnamee = request.getParameter("mnamee");
-        System.out.println("+++++"+mnamee);
-        String sacePath=request.getServletContext().getRealPath("/")+"moviephoto/"+newName;
-        File file=new File(sacePath);
-        if(!file.getParentFile().exists()){
-            file.getParentFile().mkdirs();
-        }
-        FileUtils.copyFile(doc,file);
-        String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/moviephoto/"+newName;
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("readPath",readPath);
-        System.out.println(jsonObject.toString());
-        jsonData=jsonObject.toString();
+//        HttpServletRequest request=ServletActionContext.getRequest();
+//        String newName=movie.getMnamec()+ UUID.randomUUID()+docFileName.substring(docFileName.lastIndexOf("."));
+//        String sacePath=request.getServletContext().getRealPath("/")+"moviephoto/"+newName;
+//        File file=new File(sacePath);
+//        if(!file.getParentFile().exists()){
+//            file.getParentFile().mkdirs();
+//        }
+//        FileUtils.copyFile(doc,file);
+//        String readPath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/moviephoto/"+newName;
+//        jsonData=readPath;
+//        System.out.println(readPath);
         return "success";
     }
     public String add() throws IOException {
