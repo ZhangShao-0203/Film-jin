@@ -118,7 +118,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="am-form-group">
+                                               <div class="am-form-group">
                                                     <label for="user-email" class="am-u-sm-3 am-form-label">
                                                         电影院编号</label>
                                                     <div class="am-u-sm-9">

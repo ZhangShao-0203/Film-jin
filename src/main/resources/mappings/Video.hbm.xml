@@ -8,7 +8,6 @@
             <generator class="increment"></generator>
         </id>
         <property name="viname"></property>
-        <property name="cid"></property>
 
         <many-to-one name="cinema" class="Video" column="CID"></many-to-one>
     </class>

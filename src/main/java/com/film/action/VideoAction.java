@@ -39,7 +39,7 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
             jsonObject = new JSONObject();
             jsonObject.put("viid",v.getViid());
             jsonObject.put("viname",v.getViname());
-            jsonObject.put("cid",v.getCid());
+            //jsonObject.put("cid",v.getCid());
             jsonArray.put(jsonObject);
         }
         //System.out.println(jsonArray.toString());
@@ -63,7 +63,7 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
 
         jsonObject.put("viid", video.getViid());
         jsonObject.put("viname",video.getViname());
-        jsonObject.put("cid",video.getCid());
+        //jsonObject.put("cid",video.getCid());
         jsonData= jsonObject.toString();
 
         return "success";
