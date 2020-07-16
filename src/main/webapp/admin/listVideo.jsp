@@ -106,6 +106,7 @@
                             <!-- content end -->
                         </div>
                         <!--添加 end-->
+                    </div>
                 </ul>
             </div>
         </div>
@@ -123,6 +124,7 @@
         $(function() {
 
             $(".tabs").slide({ trigger: "click" });
+            showVideo();
 
         });
 
@@ -170,11 +172,19 @@
             $.jq_Confirm({
                 message: "您确定要删除吗?",
                 btnOkClick: function() {
-
+                    $.ajax({
+                        type: "post",
+                        url: "deleteVideo",
+                        data: {viid:id },
+                        success: function(data) {
+                            showVideo();
+                        }
+                    });
                 }
             });
         }
-        $(function () {
+        function showVideo(){
+            $("#showVideo").empty();
             $.ajax({
                 url:"listVideo",
                 type:"post",
@@ -188,12 +198,14 @@
                             "                                    <td>"+jsonObj[i].viname+"</td>\n" +
                             "                                    <td>"+jsonObj[i].cid+"</td>\n" +
                             "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
-                            "                                    <td class=\"delete\"><button onclick=\"btn_delete(1)\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                            "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].viid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                             "                                </tr>")
                     }
                 }
             })
-        })
+
+        }
+
     </script>
 
 </div>

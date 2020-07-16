@@ -152,14 +152,13 @@
 
                 <div id="light" class="white_content">
                     <form class="am-form am-form-horizontal"
-                          action="updateVip" method="post" enctype="multipart/form-data"
-                          target="_parent">
+                          action="updateVip" method="post" enctype="multipart/form-data" >
 
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">
                                 会员名称</label>
                             <div class="am-u-sm-9">
-                                <input type="hidden" name="vname" value="" id="vname">
+                                <input type="hidden" name="vid" value="" id="vid">
                                 <input type="text" id="user-name1" required
                                        placeholder="会员名称" name="vname">
                                 <small>10字以内...</small>

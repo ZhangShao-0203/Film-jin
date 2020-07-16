@@ -24,7 +24,7 @@ public class VideoService implements IVideoService {
 
     @Override
     public int delete(int id) {
-        return 0;
+        return videoDao.delete(id);
     }
 
     @Override
