@@ -200,105 +200,103 @@
 </div>
 
 
-                    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-                    <script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
-                    <script src="js/_layout.js"></script>
-                    <script src="js/plugs/jquery.SuperSlide.source.js"></script>
-                    <script>
-                        var num = 1;
-                        $(function() {
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+<script src="js/_layout.js"></script>
+<script src="js/plugs/jquery.SuperSlide.source.js"></script>
+<script>
+    var num = 1;
+    $(function() {
 
-                            $(".tabs").slide({ trigger: "click" });
-                            showVip();
-                        });
-                        function showVip(){
-                            $("#showVip").empty();
-                            $.ajax({
-                                url:"listVip",
-                                type:"post",
-                                data:{},
-                                dataType:"json",
-                                success:function(data) {
-                                    var jsonObj=eval("("+data+")");
-                                    for (var i = 0; i <jsonObj.length ; i++) {
-                                        $("#showVip").append("<tr>\n" +
-                                            "                                    <td>"+jsonObj[i].vid+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].vname+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
-                                            "                                    <td>"+jsonObj[i].tel+"</td>\n" +
-                                            "                                    <td class=\"edit\"><button onclick=\"btn_edit("+jsonObj[i].vid+")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
-                                            "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
-                                            "                                </tr>")
-                                    }
-                                }
-                            })
-                        }
+        $(".tabs").slide({ trigger: "click" });
+        showVip();
+    });
+    function showVip(){
+        $("#showVip").empty();
+        $.ajax({
+            url:"listVip",
+            type:"post",
+            data:{},
+            dataType:"json",
+            success:function(data) {
+                var jsonObj=eval("("+data+")");
+                for (var i = 0; i <jsonObj.length ; i++) {
+                    $("#showVip").append("<tr>\n" +
+                        "                                    <td>"+jsonObj[i].vid+"</td>\n" +
+                        "                                    <td>"+jsonObj[i].vname+"</td>\n" +
+                        "                                    <td>"+jsonObj[i].vpass+"</td>\n" +
+                        "                                    <td>"+jsonObj[i].tel+"</td>\n" +
+                        "                                    <td class=\"edit\"><button onclick=\"btn_edit("+jsonObj[i].vid+")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                        "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].vid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                        "                                </tr>")
+                }
+            }
+        })
+    }
 
-                        var btn_save = function() {
-                            var pid = $("#RawMaterialsTypePageId  option:selected").val();
-                            var name = $("#RawMaterialsTypeName").val();
-                            var desc = $("#RawMaterialsTypeDescription").val();
-                            var ramark = $("#Ramark").val();
-                            $.ajax({
-                                type: "post",
-                                url: "/RawMaterialsType/AddRawMaterialsType",
-                                data: { name: name, pid: pid, desc: desc, ramark: ramark },
-                                success: function(data) {
-                                    if(data > 0) {
-                                        $.jq_Alert({
-                                            message: "添加成功",
-                                            btnOktext: "确认",
-                                            dialogModal: true,
-                                            btnOkClick: function() {
-                                                //$("#RawMaterialsTypeName").val("");
-                                                //$("#RawMaterialsTypeDescription").val("");
-                                                //$("#Ramark").val("");
-                                                //page1();
-                                                location.reload();
-
-                                            }
-                                        });
-                                    }
-                                }
-                            });
-                            alert(t);
-                        }
-
-                        var btn_edit = function (id) {
-                            $("#light").css({display: "block"})
-                            $("#fade").css({display: "block"})
-                            $.ajax({
-                                type: "post",
-                                url: "editVip",
-                                data: {vid: id},
-                                success: function (data) {
-                                    var jsonobj = eval("(" + data + ")");
-                                    $("#vid").val(jsonobj.vid);
-                                    $("#user-name1").val(jsonobj.vname);
-                                    $("#user-pass1").val(jsonobj.vpass);
-                                    $("#user-tel1").val(jsonobj.tel);
-                                }
-                            });
+    var btn_save = function() {
+        var pid = $("#RawMaterialsTypePageId  option:selected").val();
+        var name = $("#RawMaterialsTypeName").val();
+        var desc = $("#RawMaterialsTypeDescription").val();
+        var ramark = $("#Ramark").val();
+        $.ajax({
+            type: "post",
+            url: "/RawMaterialsType/AddRawMaterialsType",
+            data: { name: name, pid: pid, desc: desc, ramark: ramark },
+            success: function(data) {
+                if(data > 0) {
+                    $.jq_Alert({
+                        message: "添加成功",
+                        btnOktext: "确认",
+                        dialogModal: true,
+                        btnOkClick: function() {
+                            //$("#RawMaterialsTypeName").val("");
+                            //$("#RawMaterialsTypeDescription").val("");
+                            //$("#Ramark").val("");
+                            //page1();
+                            location.reload();
 
                         }
-                        var btn_delete = function(id) {
-                            $.jq_Confirm({
-                                message: "您确定要删除吗?",
-                                btnOkClick: function() {
-                                    $.ajax({
-                                        type: "post",
-                                        url: "deleteVip",
-                                        data: {vid:id },
-                                        success: function(data) {
-                                            showVip();
-                                        }
-                                    });
-                                }
-                            });
-                        }
+                    });
+                }
+            }
+        });
+        alert(t);
+    }
 
+    var btn_edit = function (id) {
+        $("#light").css({display: "block"})
+        $("#fade").css({display: "block"})
+        $.ajax({
+            type: "post",
+            url: "editVip",
+            data: {vid: id},
+            success: function (data) {
+                var jsonobj = eval("(" + data + ")");
+                $("#vid").val(jsonobj.vid);
+                $("#user-name1").val(jsonobj.vname);
+                $("#user-pass1").val(jsonobj.vpass);
+                $("#user-tel1").val(jsonobj.tel);
+            }
+        });
 
-                    </script>
+    }
+    var btn_delete = function(id) {
+        $.jq_Confirm({
+            message: "您确定要删除吗?",
+            btnOkClick: function() {
+                $.ajax({
+                    type: "post",
+                    url: "deleteVip",
+                    data: {vid:id },
+                    success: function(data) {
+                        showVip();
+                    }
+                });
+            }
+        });
+    }
+</script>
 </div>
 </body>
 

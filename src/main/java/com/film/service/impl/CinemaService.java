@@ -9,29 +9,29 @@ import java.util.List;
 
 @Data
 public class CinemaService implements ICinemaService {
-    private ICinemaDao iCinemaDao;
+    private ICinemaDao cinemaDao;
     @Override
     public int add(Cinema cinema) {
-        return 0;
+        return cinemaDao.add(cinema);
     }
 
     @Override
     public Cinema get(int id) {
-        return null;
+        return cinemaDao.get(id);
     }
 
     @Override
     public int delete(int id) {
-        return 0;
+        return cinemaDao.delete(id);
     }
 
     @Override
     public int update(Cinema cinema) {
-        return 0;
+        return cinemaDao.update(cinema);
     }
 
     @Override
     public List<Cinema> list() {
-        return null;
+        return cinemaDao.list();
     }
 }

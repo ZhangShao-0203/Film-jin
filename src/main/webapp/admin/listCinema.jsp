@@ -16,6 +16,41 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        #showVip tr td {
+            text-align: center;
+        }
+
+        #tbRecord tr th {
+            text-align: center;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 33%;
+            padding: 20px;
+            border: 2px solid orange;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,12 +81,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="showCinema">
-                                <tr>
-                                    <td>1</td>
-                                    <td>商品1</td>
-                                    <td class="edit"><button onclick="btn_edit(1)"><i class="icon-edit bigger-120"></i>编辑</button></td>
-                                    <td class="delete"><button onclick="btn_delete(1)"><i class="icon-trash bigger-120"></i>删除</button></td>
-                                </tr>
+
                                 </tbody>
 
                             </table>
@@ -76,7 +106,7 @@
                                              style="padding-top: 30px;">
 
                                             <form class="am-form am-form-horizontal"
-                                                  action="user/addUser1Submit.action" method="post">
+                                                  action="addCinema" method="post">
 
                                                 <div class="am-form-group">
                                                     <label for="name" class="am-u-sm-3 am-form-label">
@@ -101,7 +131,34 @@
                             <!-- content end -->
                         </div>
                         <!--添加 end-->
+                    </div>
                 </ul>
+
+                <div id="light" class="white_content">
+                    <form class="am-form am-form-horizontal"
+                          action="updateCinema" method="post" enctype="multipart/form-data" >
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                电影院名称</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="cid" value="" id="cid">
+                                <input type="text" id="user-name1" required
+                                       placeholder="电影院名称" name="cname">
+                                <small>10字以内...</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="am-btn am-btn-success"
+                                       value="修改提交"/>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="javascript:void(0)"
+                       onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a>
+                </div>
+                <div id="fade" class="black_overlay"></div>
             </div>
         </div>
         <!--tab end-->
@@ -116,11 +173,30 @@
     <script>
         var num = 1;
         $(function() {
-
             $(".tabs").slide({ trigger: "click" });
+            showCinema();
 
         });
 
+       function showCinema() {
+
+           $.ajax({
+               url:"listCinema",
+               type:"post",
+               dataType:"json",
+               success:function(data) {
+                   var jsonObj=eval("("+data+")");
+                   for (var i = 0; i <jsonObj.length ; i++) {
+                       $("#showCinema").append("<tr>\n" +
+                           "                                    <td>"+jsonObj[i].cid+"</td>\n" +
+                           "                                    <td>"+jsonObj[i].cname+"</td>\n" +
+                           "                                    <td class=\"edit\"><button onclick=\"btn_edit("+jsonObj[i].cid+")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                           "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].cid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
+                           "                                </tr>")
+                   }
+               }
+           })
+       }
 
         var btn_save = function() {
             var pid = $("#RawMaterialsTypePageId  option:selected").val();
@@ -152,20 +228,33 @@
             alert(t);
         }
 
-        var btn_edit = function(id) {
-            $.jq_Panel({
-                url: "/RawMaterialsType/EditRawMaterialsType?id=" + id,
-                title: "编辑分类",
-                dialogModal: true,
-                iframeWidth: 500,
-                iframeHeight: 400
+        var btn_edit = function (id) {
+            $("#light").css({display: "block"})
+            $("#fade").css({display: "block"})
+            $.ajax({
+                type: "post",
+                url: "editCinema",
+                data: {cid: id},
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    $("#cid").val(jsonobj.cid);
+                    $("#user-name1").val(jsonobj.cname);
+                }
             });
+
         }
         var btn_delete = function(id) {
             $.jq_Confirm({
                 message: "您确定要删除吗?",
                 btnOkClick: function() {
-
+                    $.ajax({
+                        type: "post",
+                        url: "deleteCinema",
+                        data: {cid:id },
+                        success: function(data) {
+                            showCinema();
+                        }
+                    });
                 }
             });
         }

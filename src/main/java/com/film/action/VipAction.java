@@ -53,7 +53,7 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
 
     public String add(){
         int i = vipService.add(vip);
-        System.out.println(i);
+        //System.out.println(i);
         return "index";
     }
 
@@ -73,7 +73,7 @@ public class VipAction extends ActionSupport implements ModelDriven<Vip> {
     }
 
     public String update(){
-        System.out.println(vip.getVid());
+        //System.out.println(vip.getVid());
         int i = vipService.update(vip);
         return "index";
     }

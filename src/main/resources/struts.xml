@@ -68,5 +68,16 @@
             <allowed-methods>list,add,delete,edit,update</allowed-methods>
         </action>
 
+        <!--电影院-->
+        <action name="*Cinema" class="com.film.action.CinemaAction" method="{1}">
+            <result name="listjsp">/list.jsp</result>
+            <result name="index">/admin/listCinema.jsp</result>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+            </result>
+            <allowed-methods>list,add,delete,edit,update</allowed-methods>
+        </action>
+
+
     </package>
 </struts>

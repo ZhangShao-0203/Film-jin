@@ -16,6 +16,41 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        #showVip tr td {
+            text-align: center;
+        }
+
+        #tbRecord tr th {
+            text-align: center;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 33%;
+            padding: 20px;
+            border: 2px solid orange;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,7 +106,7 @@
                                         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4"
                                              style="padding-top: 30px;">
                                             <form class="am-form am-form-horizontal"
-                                                  action="user/addUser1Submit.action" method="post">
+                                                  action="addVideo" method="post">
 
                                                 <div class="am-form-group">
                                                     <label for="name" class="am-u-sm-3 am-form-label">
@@ -87,8 +122,8 @@
                                                     <label for="user-email" class="am-u-sm-3 am-form-label">
                                                         电影院编号</label>
                                                     <div class="am-u-sm-9">
-                                                        <select name="groupId" required>
-                                                            <option value="">请选择电影院</option>
+                                                        <select name="groupId" required id="addCinema">
+
                                                         </select> <small>群组</small>
                                                     </div>
                                                 </div>
@@ -108,6 +143,32 @@
                         <!--添加 end-->
                     </div>
                 </ul>
+
+                <div id="light" class="white_content">
+                    <form class="am-form am-form-horizontal"
+                          action="updateVideo" method="post" enctype="multipart/form-data" >
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                放映厅名称</label>
+                            <div class="am-u-sm-9">
+                                <input type="hidden" name="viid" value="" id="viid">
+                                <input type="text" id="user-name1" required
+                                       placeholder="放映厅名称" name="viname">
+                                <small>10字以内...</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="am-btn am-btn-success"
+                                       value="修改提交"/>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="javascript:void(0)"
+                       onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a>
+                </div>
+                <div id="fade" class="black_overlay"></div>
             </div>
         </div>
         <!--tab end-->
@@ -125,6 +186,7 @@
 
             $(".tabs").slide({ trigger: "click" });
             showVideo();
+            addCinema();
 
         });
 
@@ -159,14 +221,20 @@
             alert(t);
         }
 
-        var btn_edit = function(id) {
-            $.jq_Panel({
-                url: "/RawMaterialsType/EditRawMaterialsType?id=" + id,
-                title: "编辑分类",
-                dialogModal: true,
-                iframeWidth: 500,
-                iframeHeight: 400
+        var btn_edit = function (id) {
+            $("#light").css({display: "block"})
+            $("#fade").css({display: "block"})
+            $.ajax({
+                type: "post",
+                url: "editVideo",
+                data: {viid: id},
+                success: function (data) {
+                    var jsonobj = eval("(" + data + ")");
+                    $("#viid").val(jsonobj.viid);
+                    $("#user-name1").val(jsonobj.viname);
+                }
             });
+
         }
         var btn_delete = function(id) {
             $.jq_Confirm({
@@ -197,13 +265,26 @@
                             "                                    <td>"+jsonObj[i].viid+"</td>\n" +
                             "                                    <td>"+jsonObj[i].viname+"</td>\n" +
                             "                                    <td>"+jsonObj[i].cid+"</td>\n" +
-                            "                                    <td class=\"edit\"><button onclick=\"btn_edit(1)\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
+                            "                                    <td class=\"edit\"><button onclick=\"btn_edit("+jsonObj[i].viid+")\"><i class=\"icon-edit bigger-120\"></i>编辑</button></td>\n" +
                             "                                    <td class=\"delete\"><button onclick=\"btn_delete("+jsonObj[i].viid+")\"><i class=\"icon-trash bigger-120\"></i>删除</button></td>\n" +
                             "                                </tr>")
                     }
                 }
             })
+        }
 
+        function addCinema() {
+            $.ajax({
+                url:"listCinema",
+                type:"post",
+                dataType:"json",
+                success:function(data) {
+                    var jsonObj=eval("("+data+")");
+                    for (var i = 0; i <jsonObj.length ; i++) {
+                        $("#addCinema").append("<option value='"+jsonObj[i].cid+"'>"+jsonObj[i].cname+"</option>")
+                    }
+                }
+            })
         }
 
     </script>

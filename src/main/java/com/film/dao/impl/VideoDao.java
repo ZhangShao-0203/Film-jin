@@ -18,24 +18,31 @@ public class VideoDao implements IVideoDao {
 
     @Override
     public int add(Video video) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        int i = (int)session.save(video);
+        return i;
     }
 
     @Override
     public Cinema get(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Cinema cinema = session.get(Cinema.class, id);
+        return cinema;
     }
 
     @Override
     public int delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(id);
+        Video video = session.get(Video.class, id);
+        session.delete(video);
         return 1;
     }
 
     @Override
     public int update(Video video) {
-        return 0;
+        Session session = sessionFactory.getCurrentSession();
+        session.update(video);
+        return 2;
     }
 
     @Override

@@ -15,7 +15,7 @@
     <!--数据库连接-->
     <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"></property>
+        <property name="url" value="jdbc:oracle:thin:@192.168.0.196:1521:XE"></property>
         <property name="username" value="film"></property>
         <property name="password" value="root"></property>
     </bean>
@@ -76,4 +76,8 @@
     <bean id="movieAction" class="com.film.action.MovieAction" scope="prototype"></bean>
     <bean id="movieService" class="com.film.service.impl.MovieService"></bean>
     <bean id="movieDao" class="com.film.dao.impl.MovieDao" ></bean>
+
+    <bean id="cinemaAction" class="com.film.action.CinemaAction" scope="prototype"></bean>
+    <bean id="cinemaService" class="com.film.service.impl.CinemaService"></bean>
+    <bean id="cinemaDao" class="com.film.dao.impl.CinemaDao" ></bean>
 </beans>
