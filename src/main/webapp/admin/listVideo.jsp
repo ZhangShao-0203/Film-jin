@@ -121,7 +121,7 @@
                                                     <label for="user-email" class="am-u-sm-3 am-form-label">
                                                         电影院编号</label>
                                                     <div class="am-u-sm-9">
-                                                        <select name="cid" required id="addCinema">
+                                                        <select name="groupId" required id="addCinema">
 
                                                         </select> <small>群组</small>
                                                     </div>
@@ -148,13 +148,22 @@
                           action="updateVideo" method="post" enctype="multipart/form-data" >
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                            <label for="user-name1" class="am-u-sm-3 am-form-label">
                                 放映厅名称</label>
                             <div class="am-u-sm-9">
                                 <input type="hidden" name="viid" value="" id="viid">
                                 <input type="text" id="user-name1" required
                                        placeholder="放映厅名称" name="viname">
                                 <small>10字以内...</small>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-email1" class="am-u-sm-3 am-form-label">
+                                电影院编号</label>
+                            <div class="am-u-sm-9">
+                                <select name="groupId" required id="addCinema2">
+
+                                </select> <small>群组</small>
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -186,6 +195,7 @@
             $(".tabs").slide({ trigger: "click" });
             showVideo();
             addCinema();
+            addCinema2();
 
         });
 
@@ -228,6 +238,7 @@
                 url: "editVideo",
                 data: {viid: id},
                 success: function (data) {
+                    alert(jsonobj.viid);
                     var jsonobj = eval("(" + data + ")");
                     $("#viid").val(jsonobj.viid);
                     $("#user-name1").val(jsonobj.viname);
@@ -281,6 +292,19 @@
                     var jsonObj=eval("("+data+")");
                     for (var i = 0; i <jsonObj.length ; i++) {
                         $("#addCinema").append("<option value='"+jsonObj[i].cid+"'>"+jsonObj[i].cname+"</option>")
+                    }
+                }
+            })
+        }
+        function addCinema2() {
+            $.ajax({
+                url:"listCinema",
+                type:"post",
+                dataType:"json",
+                success:function(data) {
+                    var jsonObj=eval("("+data+")");
+                    for (var i = 0; i <jsonObj.length ; i++) {
+                        $("#addCinema2").append("<option value='"+jsonObj[i].cid+"'>"+jsonObj[i].cname+"</option>")
                     }
                 }
             })

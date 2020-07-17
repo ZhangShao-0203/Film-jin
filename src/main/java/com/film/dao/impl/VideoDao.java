@@ -26,10 +26,10 @@ public class VideoDao implements IVideoDao {
     }
 
     @Override
-    public Cinema get(int id) {
+    public Video get(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Cinema cinema = session.get(Cinema.class, id);
-        return cinema;
+        Video video = session.get(Video.class, id);
+        return video;
     }
 
     @Override

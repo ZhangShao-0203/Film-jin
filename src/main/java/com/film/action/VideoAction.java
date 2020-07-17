@@ -59,7 +59,6 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
     public String add(){
         cinema.setCid(Integer.parseInt(groupId));
         video.setCinema(cinema);
-        System.out.println("+++"+cinema.toString());
         int i = videoService.add(video);
         return "index";
     }
@@ -69,7 +68,6 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
 
         jsonObject.put("viid", video.getViid());
         jsonObject.put("viname",video.getViname());
-        //jsonObject.put("cid",video.getCid());
         jsonData= jsonObject.toString();
 
         return "success";

@@ -18,7 +18,7 @@ public class VideoService implements IVideoService {
     }
 
     @Override
-    public Cinema get(int id) {
+    public Video get(int id) {
         return videoDao.get(id);
     }
 

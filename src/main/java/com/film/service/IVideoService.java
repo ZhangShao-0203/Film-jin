@@ -9,7 +9,7 @@ public interface IVideoService {
     //添加用户
     int add(Video video);
     //查询用户
-    Cinema get(int id);
+    Video get(int id);
     //删除用户
     int delete(int id);
     //修改用户
