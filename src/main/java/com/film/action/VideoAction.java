@@ -10,7 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class VideoAction extends ActionSupport implements ModelDriven<Video> {
@@ -64,10 +66,12 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
     public String edit(){
         videoService.get(video.getViid());
         JSONObject jsonObject = new JSONObject();
+
         jsonObject.put("viid", video.getViid());
         jsonObject.put("viname",video.getViname());
         //jsonObject.put("cid",video.getCid());
         jsonData= jsonObject.toString();
+
         return "success";
     }
     public String update(){
