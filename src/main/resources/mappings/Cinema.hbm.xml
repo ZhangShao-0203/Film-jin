@@ -9,7 +9,7 @@
         </id>
         <property name="cname"></property>
 
-        <set name="videos" cascade="all">
+        <set name="videos" inverse="true" cascade="all">
             <key column="CID"></key>
             <one-to-many class="Video"></one-to-many>
         </set>
