@@ -21,11 +21,6 @@ public class VideoDao implements IVideoDao {
     @Override
     public int add(Video video) {
         Session session = sessionFactory.getCurrentSession();
-        Set<Video> videos = new HashSet();
-        Video video1 = new Video();
-        Cinema cinema =new Cinema();
-        video1.setCinema(cinema);
-        cinema.setVideos(videos);
         int i = (int)session.save(video);
         return i;
     }

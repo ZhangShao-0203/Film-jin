@@ -10,7 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class VideoAction extends ActionSupport implements ModelDriven<Video> {
@@ -53,8 +55,12 @@ public class VideoAction extends ActionSupport implements ModelDriven<Video> {
     }
 
     public String add(){
-        int i = videoService.add(video);
-
+        Set<Video> videos = new HashSet();
+        Video video1 = new Video();
+        Cinema cinema =new Cinema();
+        video1.setCinema(cinema);
+        cinema.setVideos(videos);
+        int i = videoService.add(video1);
         return "success";
     }
     public String edit(){

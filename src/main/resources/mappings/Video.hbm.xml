@@ -9,7 +9,7 @@
         </id>
         <property name="viname"></property>
 
-        <many-to-one name="cinema" class="Video" column="CID"></many-to-one>
+        <many-to-one name="cinema" class="Cinema" column="CID"></many-to-one>
     </class>
 
 </hibernate-mapping>
