@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/amazeui.min.css"/>
     <link rel="stylesheet" href="css/admin.css"/>
+
     <style>
         #show tr td {
             text-align: center;

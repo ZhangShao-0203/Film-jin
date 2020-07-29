@@ -47,7 +47,11 @@
       <artifactId>ojdbc6</artifactId>
       <version>10.2.0.1.0</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.8</version>
+    </dependency>
     <!--lombok自动生成get,set,tostring方法-->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -86,7 +90,6 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.8.13</version>
     </dependency>
-
     <!--将数据库连接 交给Spring处理-->
     <dependency>
       <groupId>org.springframework</groupId>
